@@ -3,13 +3,13 @@ import fakeStore from "../../apis/fakeStore"
 
 
 export const fetchProducts = ()=> async function(dispatch){
-    const response = await fakeStore.get("/products")
-    dispatch({type: ActionTypes.SET_PRODUCTS,payload:response.data})
+    const response = await fakeStore.get("/getProducts")
+    dispatch({type: ActionTypes.SET_PRODUCTS,payload:response.data.data})
 }
 
 export const fetchProduct = (id)=> async function(dispatch){
-    const response = await fakeStore.get(`/products/${id}`)
-    dispatch({type: ActionTypes.SELECTED_PRODUCT,payload:response.data})
+    const response = await fakeStore.get(`/getProduct/${id}`)
+    dispatch({type: ActionTypes.SELECTED_PRODUCT,payload:response.data.data})
 }
 
 export const setProducts = (products)=>{
