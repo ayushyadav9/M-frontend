@@ -1,17 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import ProductListing from "./components/ProductListing";
+
 import ProductDetails from "./components/ProductDetails"
+import Home from "./components/Home";
 
 function App() {
   return (
-    <div>
+    <div className="masterContainer">
       <Router>
-        <Header />
         <Switch>
-          <Route path="/" exact component={ProductListing} />
+          <Route path="/" exact component={Home} />
           <Route path="/product/:productId" component={ProductDetails} />
           <Route>404 Not Found!</Route>
         </Switch>
