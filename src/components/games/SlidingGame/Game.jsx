@@ -21,7 +21,7 @@ Game.defaultProps = {
   gameSize: 450,
 };
 
-export default function Game({ gridDimension, gameSize }) {
+export default function Game({ gridDimension, gameSize, thumbnailImg }) {
   const [data, setData] = useState({
     gridModel: GridModel.buildFromSize(gridDimension),
     gridId: 1,
@@ -111,6 +111,7 @@ export default function Game({ gridDimension, gameSize }) {
           model={data.gridModel}
           moveTile={moveTile}
           gameSize={gameSize}
+          thumbnailImg={thumbnailImg}
         />
         <div id="aside">
           <ScoreBoard moves={data.moves} gridId={data.gridId} />
@@ -127,10 +128,10 @@ export default function Game({ gridDimension, gameSize }) {
 }
 
 const GameWrapper = styled.div`
-  padding: 25px;
+  // padding: 25px;
   #game {
-    margin: auto;
-    width: 670px;
+    // margin: auto;
+    // width: 670px;
 
     #grid {
       display: inline-block;
