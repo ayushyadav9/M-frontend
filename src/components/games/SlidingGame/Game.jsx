@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Grid from "./Grid";
 import Menu from "./Menu.jsx";
-import ScoreBoard from "./ScoreBoard.jsx";
 import GridModel from "../../models/Grid";
 import SolverModel from "../../models/Solver";
 import styled from "styled-components";
