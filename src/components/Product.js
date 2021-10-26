@@ -114,12 +114,7 @@ const Product = () => {
           {products &&
             products.length > 0 &&
             products.map((product, index) => (
-              <ProductTile
-                key={product._id}
-                products={product}
-                index={index}
-                key={index}
-              />
+              <ProductTile key={product._id} products={product} index={index} />
             ))}
         </ProductShow>
       </ProductContent>
