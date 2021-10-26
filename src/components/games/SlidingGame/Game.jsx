@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Grid from "./Grid";
 import Menu from "./Menu.jsx";
 import ScoreBoard from "./ScoreBoard.jsx";
@@ -27,6 +27,11 @@ export default function Game({ gridDimension, gameSize, thumbnailImg }) {
     gridId: 1,
     moves: 0,
   });
+
+  useEffect(() => {
+    timeouts = [];
+    solution = null;
+  }, []);
 
   const hint = () => {
     if (!isSolving()) {
