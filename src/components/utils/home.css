@@ -1,8 +1,8 @@
-.myntra_Icon_View {
+/* .myntra_Icon_View {
   width: 45%;
   padding-top: 5px;
-}
-
+} */
+/* 
 .headerMenu {
   display: flex;
   align-items: center;
@@ -10,37 +10,37 @@
   position: fixed;
   background: white;
   box-shadow: 4px 5px 5px -1px rgb(231 228 228 / 67%);
-}
+} */
 
-.icon_Space {
+/* .icon_Space {
   width: 12%;
-}
+} */
 
-.menu_space {
+/* .menu_space {
   width: 30rem;
   display: flex;
   justify-content: space-evenly;
   font-size: 13px;
   font-weight: 600;
-}
+} */
 
-.search_space {
+/* .search_space {
   width: 40%;
   text-align: center;
-}
+} */
 
-.profile_space {
+/* .profile_space {
   width: 20%;
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
-.watch_listView {
+/* .watch_listView {
   display: flex;
   justify-content: center;
-}
+} */
 
-.list_count {
+/* .list_count {
   font-size: 9px;
   background: #f75e65;
   padding: 1px;
@@ -49,38 +49,39 @@
   width: 12px;
   height: 12px;
   font-weight: 600;
-}
+} */
 
-.iconName {
+/* .iconName {
   font-size: 10px;
-}
+} */
 
-.options_Show {
+/* .options_Show {
   width: 16rem;
-}
-
+} */
+/* 
 .filter_sort {
   width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 80px 0px 0px 0px;
-  /* height: 50px; */
+  height: 50px;
   border-bottom: 1px solid rgb(243, 241, 241);
-}
+} */
 
+/* 
 .filter_Show {
   font-size: 16px;
   font-weight: 600;
   padding: 10px 0px 0px 30px;
-}
-
+} */
+/* 
 .form-control {
   width: 160px;
   height: 32px;
   padding: 0px 5px;
-}
+} */
 
-.sort_title {
+/* .sort_title {
   width: 33%;
   font-size: 13px;
   padding: 7px 7px 0px 0px;
@@ -95,38 +96,38 @@
 .content {
   display: flex;
   width: 100%;
-}
+} */
 
-.gender_Choice {
+/* .gender_Choice {
   border-bottom: 1px solid rgb(243, 241, 241);
   border-right: 1px solid rgb(243, 241, 241);
   text-align: start;
   padding: 10px 30px;
-}
+} */
 
-.category_check {
+/* .category_check {
   display: flex;
   font-size: 13px;
   padding: 2px;
-}
+} */
 
-.title {
+/* .title {
   padding-bottom: 10px;
   font-size: 16px;
   font-weight: 600;
-}
+} */
 
-.choose_Name {
+/* .choose_Name {
   padding: 0px 5px;
-}
+} */
 
-.product_Show {
+/* .product_Show {
   width: 83rem;
   padding: 10px;
   flex-wrap: wrap;
-}
+} */
 
-.product_Container {
+/* .product_Container {
   width: 20%;
   display: inline-block;
   margin: 5px;
@@ -134,13 +135,13 @@
   text-align: start;
   padding: 5px;
   cursor: pointer;
-}
+} */
 
-.product_Image {
+/* .product_Image {
   width: 100%;
-}
+} */
 
-.brand_Name {
+/* .brand_Name {
   font-size: 15px;
   font-weight: 600;
   width: 64%;
@@ -148,9 +149,9 @@
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-}
+} */
 
-.addproduct_Info {
+/* .addproduct_Info {
   font-size: 13px;
   color: rgb(129 124 124);
   width: 64%;
@@ -158,31 +159,31 @@
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-}
+} */
 
-.price_Show {
+/* .price_Show {
   display: flex;
-}
+} */
 
-.price_view {
+/* .price_view {
   font-size: 13px;
   font-weight: 600;
   padding: 2px;
-}
+} */
 
-.mrp_view {
+/* .mrp_view {
   font-size: 12px;
   text-decoration: line-through;
   padding: 2px;
-}
+} */
 
-.discount_view {
+/* .discount_view {
   padding: 1px 8px;
   font-size: 11px;
   color: orange;
-}
+} */
 
-.fillStar {
+/* .fillStar {
   color: #f75e65;
   font-size: 20px;
   cursor: pointer;
@@ -196,20 +197,20 @@
   position: relative;
   padding: 0px 0px 1px 51px;
   bottom: 6px;
-}
+} */
 
-.movieStar {
+/* .movieStar {
   display: flex;
   height: 23px;
-}
+} */
 
-.wrapper {
+/* .wrapper {
   position: relative;
   display: flex;
   min-width: 100px;
-}
+} */
 
-.search {
+/* .search {
   border: 1px solid #e6e3e3;
   border-radius: 5px;
   height: 25px;
@@ -217,9 +218,9 @@
   padding: 2px 23px 2px 30px;
   outline: 0;
   background-color: #e6e3e3;
-}
+} */
 
-.search-icon {
+/* .search-icon {
   position: absolute;
   top: 5px;
   left: 8px;
@@ -230,7 +231,7 @@
 .search:focus {
   border: 1px solid #e6e3e3;
   background-color: #e6e3e3;
-}
+} */
 
 /* Loader */
 
@@ -255,7 +256,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
   .brand_Name {
     font-size: 13px;
   }
@@ -274,9 +275,9 @@
   .discount_view {
     font-size: 9px;
   }
-}
+} */
 
-@media only screen and (max-width: 945px) {
+/* @media only screen and (max-width: 945px) {
   .sort_title {
     width: 40%;
     font-size: 12px;
@@ -294,4 +295,4 @@
   .discount_view {
     font-size: 8px;
   }
-}
+} */

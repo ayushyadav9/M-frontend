@@ -18,6 +18,7 @@ var images = [
 const Grid = (props) => {
   useEffect(() => {
     loadNewImage();
+    // eslint-disable-next-line
   }, []);
 
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -25,7 +26,11 @@ const Grid = (props) => {
 
   const loadNewImage = () => {
     let image = new Image();
-    image.src = images[Math.floor(Math.random() * images.length)];
+    // image.src = images[Math.floor(Math.random() * images.length)];
+    image.src = props.thumbnailImg
+      ? props.thumbnailImg
+      : images[Math.floor(Math.random() * images.length)];
+
     setImageLoaded(image.complete);
     setImageObject(image);
     image.onload = function () {

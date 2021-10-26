@@ -4,19 +4,18 @@ import { useParams } from "react-router";
 import { removeProduct, fetchProduct } from "../redux/actions/productActions";
 
 const ProductDetails = () => {
-  const product = useSelector(state => state.product)
-  const {productId} = useParams();
-  const dispatch = useDispatch()
+  const product = useSelector((state) => state.product);
+  const { productId } = useParams();
+  const dispatch = useDispatch();
   const { image, title, price, category, description } = product;
 
   useEffect(() => {
-    dispatch(fetchProduct(productId))
+    dispatch(fetchProduct(productId));
     return () => {
       dispatch(removeProduct());
     };
     // eslint-disable-next-line
   }, [productId]);
-
 
   return (
     <div className="ui grid container">
@@ -33,7 +32,9 @@ const ProductDetails = () => {
               <div className="column rp">
                 <h1>{title}</h1>
                 <h2>
-                  <a className="ui teal tag label" href="/">${price}</a>
+                  <a className="ui teal tag label" href="/">
+                    ${price}
+                  </a>
                 </h2>
                 <h3 className="ui brown block header">{category}</h3>
                 <p>{description}</p>
