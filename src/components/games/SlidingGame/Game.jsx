@@ -24,7 +24,6 @@ Game.defaultProps = {
 export default function Game({ gridDimension, gameSize, thumbnailImg }) {
   const [data, setData] = useState({
     gridModel: GridModel.buildFromSize(gridDimension),
-    gridId: 1,
     moves: 0,
   });
 
@@ -50,7 +49,6 @@ export default function Game({ gridDimension, gameSize, thumbnailImg }) {
     solution = null;
     setData((prev) => ({
       gridModel: GridModel.buildFromSize(gridDimension),
-      gridId: prev.gridId + 1,
       moves: 0,
     }));
   };
@@ -112,14 +110,13 @@ export default function Game({ gridDimension, gameSize, thumbnailImg }) {
     <GameWrapper gameSize={gameSize} gridDimension={gridDimension}>
       <div id="game">
         <Grid
-          key={data.gridId}
           model={data.gridModel}
           moveTile={moveTile}
           gameSize={gameSize}
           thumbnailImg={thumbnailImg}
         />
         <div id="aside">
-          <ScoreBoard moves={data.moves} gridId={data.gridId} />
+          <ScoreBoard moves={data.moves} />
           <Menu
             next={next}
             hint={hint}
