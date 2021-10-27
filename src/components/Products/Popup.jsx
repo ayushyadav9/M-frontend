@@ -1,16 +1,43 @@
 import styled from "styled-components";
-import Game from "../Games/SlidingGame/Game";
+import Game from "../games/SlidingGame/Game";
+import Timer from "../games/SlidingGame/Timer";
 
-const Popup = (props) => {
+const Popup = ({ handleClose, products }) => {
   return (
     <PopupContainer>
       {console.log("Game Clicked")}
       <div className="popup-box">
         <div className="box">
-          <span className="close-icon" onClick={props.handleClose}>
+          <span className="close-icon" onClick={handleClose}>
             x
           </span>
-          <Game thumbnailImg={props.thumbnailImg} />
+
+          <div style={{ float: "left", marginLeft: "70px" }}>
+            <Game thumbnailImg={products.searchImage} />
+          </div>
+
+          {/* Timer */}
+          <span style={{ textAlign: "center" }}>
+            <Timer />
+          </span>
+
+          {/* Product Tile on Popup */}
+          <div
+            className="product_Container"
+            style={{ marginLeft: "100px", paddingLeft: "10px", paddingTop: "10px" }}
+          >
+            <img src={products.searchImage} className="product_Image" alt="prod" />
+
+            <div className="movieStar">
+              <div className="brand_Name">{products.brand}</div>
+            </div>
+            <div className="addproduct_Info">{products.additionalInfo}</div>
+            <div className="price_Show">
+              <div className="price_view">{"RS." + products.price}</div>
+              <div className="mrp_view">{"RS." + products.mrp}</div>
+              <div className="discount_view">{products.discountDisplayLabel}</div>
+            </div>
+          </div>
         </div>
       </div>
     </PopupContainer>
