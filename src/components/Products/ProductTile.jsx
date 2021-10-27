@@ -10,21 +10,17 @@ function ProductTile({ products, index }) {
   };
 
   const changeAddHeart = (data, id) => {
-    // if (!showHeart.includes(id)) {
-    //   setShowHeart([...showHeart, id]);
-    // } else {
-    //   let showList = showHeart.filter((it) => it !== id);
-    //   setShowHeart(showList);
-    // }
     setShowHeart((prev) => !prev);
   };
 
   return (
     <div className="product_Container">
-      {isPopupOpen && (
-        <Popup handleClose={togglePopup} thumbnailImg={products.searchImage} />
-      )}
-      <button onClick={togglePopup}>© Ayush Yadav</button>
+      {index === 5 ? (
+        <>
+          {isPopupOpen && <Popup handleClose={togglePopup} products={products} />}
+          <button onClick={togglePopup}>© Ayush Yadav</button>
+        </>
+      ) : null}
 
       <img src={products.searchImage} className="product_Image" alt="prod" />
       <div className="movieStar">
