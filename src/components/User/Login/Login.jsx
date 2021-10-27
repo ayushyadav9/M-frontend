@@ -11,7 +11,7 @@ function Login() {
 
     const successGoogle= async (res)=>{
         console.log(res)
-        const response = await fetch('http://localhost:5000/googleSignup', {
+        const response = await fetch('https://myntrah-backend.herokuapp.com/googleSignup', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
