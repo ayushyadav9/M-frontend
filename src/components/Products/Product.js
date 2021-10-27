@@ -1,30 +1,12 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { Genders, CheckedProduct, CheckedBrand, CheckedPrice } from "./utils/utils";
+import { Genders, CheckedProduct, CheckedBrand, CheckedPrice } from "../utils/utils";
 import { Space, Radio, Checkbox } from "antd";
-// import "./utils/home.css";
-
 import ProductTile from "./ProductTile";
 
 const Product = () => {
-  // const [showHeart, setShowHeart] = useState([]);
   const products = useSelector((state) => state.allProducts.products);
-  // const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  // const togglePopup = () => {
-  //   setIsPopupOpen((prev) => !prev);
-  // };
-
-  // const changeAddHeart = (data, id) => {
-  //   if (!showHeart.includes(id)) {
-  //     setShowHeart([...showHeart, id]);
-  //   } else {
-  //     let showList = showHeart.filter((it) => it !== id);
-  //     setShowHeart(showList);
-  //   }
-  // };
 
   return (
     <>

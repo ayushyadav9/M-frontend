@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { removeProduct, fetchProduct } from "../redux/actions/productActions";
+import { removeProduct, fetchProduct } from "../../redux/actions/productActions";
 
 const ProductDetails = () => {
   const product = useSelector((state) => state.product);

@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Game from "./components/games/SlidingGame/Game";
-import "./App.css";
+import LoginScreen from "./components/User/Login/Login";
 
-import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "./components/Products/ProductDetails";
 import Home from "./components/Home";
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/product/:productId" component={ProductDetails} />
-          <Route path="/slide" component={Game} />
+          <Route path="/login" component={LoginScreen} />
           <Route>404 Not Found!</Route>
         </Switch>
       </Router>

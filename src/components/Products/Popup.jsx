@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Game from "./games/SlidingGame/Game";
+import Game from "../Games/SlidingGame/Game";
 
 const Popup = (props) => {
   return (
