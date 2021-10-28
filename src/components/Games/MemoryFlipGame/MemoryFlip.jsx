@@ -1,9 +1,10 @@
 import "semantic-ui-css/semantic.css";
 import "./MemoryFlip.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Board from "./board";
 import Summary from "./summary";
 import { withRouter } from "react-router-dom";
+import ScoreBoard from "./board/ScoreBoard";
 
 MemoryFlip.defaultProps = {
   gridSize: [5, 2],
@@ -29,8 +30,12 @@ function MemoryFlip({ gridSize, products }) {
   const [gameStats, setGameStats] = useState({
     matched: null,
     matchedAll: null,
-    moves: null,
+    moves: 0,
   });
+
+  useEffect(() => {
+    console.log(gameStats);
+  }, [gameStats]);
 
   return (
     <div className="App">
@@ -38,14 +43,17 @@ function MemoryFlip({ gridSize, products }) {
         <span className="ui header">Memory Game</span>
       </div>
       {viewOption === GAME_VIEWS.PLAYING && (
-        <Board
-          grid={gridSize}
-          GAME_VIEWS={GAME_VIEWS}
-          setViewOption={setViewOption}
-          gameStats={gameStats}
-          setGameStats={setGameStats}
-          products={products}
-        />
+        <div>
+          <Board
+            grid={gridSize}
+            GAME_VIEWS={GAME_VIEWS}
+            setViewOption={setViewOption}
+            gameStats={gameStats}
+            setGameStats={setGameStats}
+            products={products}
+          />
+          <ScoreBoard moves={gameStats.moves} />
+        </div>
       )}
 
       {viewOption === GAME_VIEWS.SUMMARY && (

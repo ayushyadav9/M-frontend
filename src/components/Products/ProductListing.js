@@ -1,21 +1,21 @@
 import { useDispatch } from "react-redux";
 import Product from "./Product";
 import React, { useEffect } from "react";
-import { fetchProducts } from "../../redux/actions/productActions";
-
+import {
+  fetchProducts,
+  fetchProductbycategory,
+} from "../../redux/actions/productActions";
 
 const ProductPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
+
     // eslint-disable-next-line
   }, []);
 
-
-  return (
-      <Product />
-  );
+  return <Product />;
 };
 
 export default ProductPage;

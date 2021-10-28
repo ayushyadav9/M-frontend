@@ -15,10 +15,15 @@ function ProductTile({ product, products, index }) {
 
   return (
     <div className="product_Container">
-      {index === 5 ? (
+      {index === 1 ? (
         <>
           {isPopupOpen && (
-            <Popup handleClose={togglePopup} product={product} products={products} />
+            <Popup
+              handleClose={togglePopup}
+              product={product}
+              products={products}
+              gameType="guess-prize"
+            />
           )}
           <button onClick={togglePopup}>© Ayush Yadav</button>
         </>
@@ -31,7 +36,7 @@ function ProductTile({ product, products, index }) {
           onClick={() => changeAddHeart(product, product.productId)}
           className={`${showHeart ? "fillStar" : "emptyStar"}`}
         >
-          {showHeart ? "♥" : "♡"}
+          {showHeart ? "❤️" : "♡"}
         </div>
       </div>
       <div className="addproduct_Info">{product.additionalInfo}</div>
