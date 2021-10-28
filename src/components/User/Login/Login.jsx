@@ -38,7 +38,7 @@ function Login() {
             <br />
             {/* <div className={styles.inputdiv}> */}
             <GoogleLogin
-              clientId="924996333248-b18i1m98ji19j0tfl0emmiv9el52eh2u.apps.googleusercontent.com"
+              clientId={process.env.REACT_APP_OAUTH_CLIENT}
               onSuccess={successGoogle}
               onFailure={(res)=>{console.log(res)}}
               render={(renderProps) => (

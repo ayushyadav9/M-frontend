@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header";
 import ProductPage from "./Products/ProductListing";
 import styled from "styled-components";
-// import "./utils/home.css";
+
 const Home = () => {
   return (
     <Container>
