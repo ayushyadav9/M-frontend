@@ -1,18 +1,23 @@
 import {ActionTypes} from "../contants/actionTypes"
-import fakeStore from "../../apis/fakeStore"
+import fakeStore from "../../apis/baseAPI"
 
-export const login = (email, password) => async dispatch => {
+export const login = (tokenId) => async dispatch => {
     try {
         dispatch({ type: ActionTypes.USER_LOGIN_REQUEST })
+
         const config = {
-            headers: {'Content-Type': 'application/json',},
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }
-        const { data } = await fakeStore.post('/login',
-            { email, password },
-            config
-        )
-        dispatch({ type: ActionTypes.USER_LOGIN_SUCCESS, payload: data })
-        localStorage.setItem('userInfo', JSON.stringify(data))
+        const data = {
+            tokenId
+        }
+        const res = await fakeStore.post('/googleSignup',data,config)
+
+        dispatch({ type: ActionTypes.USER_LOGIN_SUCCESS, payload: res.data })
+        localStorage.setItem('userInfo', JSON.stringify(res.data))
+        
     } catch (error) {
         dispatch({
             type: ActionTypes.USER_LOGIN_FAIL,

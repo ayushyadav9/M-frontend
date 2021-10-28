@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Filtertype, Icons } from "./utils/utils";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [search, setsearch] = useState("");
@@ -10,8 +11,9 @@ const Header = () => {
   return (
     <NavbarWrapper>
       <div className="navbar__iconSpace">
-        <img src="/Images/myntra.png" className="myntra_Icon_View" alt="Myntra" />
+      <StyledLink to="/"><img src="/Images/myntra.png" className="myntra_Icon_View" alt="Myntra" /></StyledLink>
       </div>
+      
       <div className="navbar__menuSpace">
         {Filtertype.map((fil_type, index) => {
           return <div key={index}>{fil_type.type}</div>;
@@ -32,13 +34,15 @@ const Header = () => {
       <div className="navbar__profileSpace">
         {Icons.map((iconsView, index) => {
           return (
-            <div key={index}>
+            <StyledLink to={iconsView.link} key={index}>
+            <div >
               <div className="profileSpace__watchListView">
                 <div>{iconsView.icon}</div>
                 <div className="profileSpace__listCount"></div>
               </div>
               <div className="profileSpace__iconName">{iconsView.name}</div>
             </div>
+            </StyledLink>
           );
         })}
       </div>
@@ -126,5 +130,8 @@ const NavbarWrapper = styled.div`
     .profileSpace__iconName {
       font-size: 10px;
     }
-  }
+  } 
+`;
+const StyledLink = styled(Link)`
+  color:black
 `;

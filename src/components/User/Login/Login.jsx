@@ -1,73 +1,140 @@
 import React from "react";
 import Coupon from "./images/Coupon.png";
-import styles from "./Login.module.css";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
+import { login } from "../../../redux/actions/userActions";
+import { useDispatch,useSelector } from "react-redux";
+import styled from "styled-components";
+import Header from "../../Header";
 
 function Login() {
   let history = useHistory();
+  const userLogin = useSelector((state) => state.userLogin);
+  const dispatch = useDispatch()
 
   const successGoogle = async (res) => {
-    console.log(res);
-    const response = await fetch("https://myntrah-backend.herokuapp.com/googleSignup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ tokenId: res.tokenId }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      localStorage.setItem("token", json.authToken);
-      history.push("/");
-    } else {
-    }
+    dispatch(login(res.tokenId))
+     if(userLogin.userInfo.success){
+      history.push("/")
+     }
+     else{
+       alert(userLogin.userInfo.error)
+     }
   };
-  const failureGoogle = () => {};
 
   return (
-    <div className={styles.logincontainer}>
-      <div className={styles.logindiv}>
-        <div className={styles.loginpromo}>
-          <img className={styles.couponcode} src={Coupon} alt="" />
-        </div>
-        <div className={styles.inputcontainer}>
+    <>
+    <Header/>
+    <LoginContainer>
+      <div className="logindiv">
+        <CouponImg>
+          <img className="couponcode" src={Coupon} alt="" />
+        </CouponImg>
+        <Inputcontainer>
           <div>
-            <span className={styles.heading}>Login</span>
-            <span className={styles.heading2}>or</span>
-            <span className={styles.heading1}>Signup</span>
+            <span className="heading">Login</span>
+            <span className="heading2">or</span>
+            <span className="heading1">Signup</span>
             <br />
             {/* <div className={styles.inputdiv}> */}
             <GoogleLogin
               clientId="924996333248-b18i1m98ji19j0tfl0emmiv9el52eh2u.apps.googleusercontent.com"
               onSuccess={successGoogle}
-              onFailure={failureGoogle}
+              onFailure={(res)=>{console.log(res)}}
               render={(renderProps) => (
                 <button
-                  className={styles.loginbutton}
+                  className="loginbutton"
                   onClick={renderProps.onClick}
                   disabled={renderProps.disabled}
                 >
                   {/* <img src='/images/google.svg' className={styles.googleimg} alt='Google' /> */}
-                  <span className={styles.heading}>SignIn with Google</span>
+                  <span className="heading">SignIn with Google</span>
                 </button>
               )}
             />
-            <p className={styles.terms}>
+            <p className="terms">
               By continuing, I agree to the{" "}
-              <span className={styles.conditions}>Terms of Use</span> &{" "}
-              <span className={styles.conditions}>Privacy Policy</span>
+              <span className="conditions">Terms of Use</span> &{" "}
+              <span className="conditions">Privacy Policy</span>
             </p>{" "}
             <p>
               Have trouble in logging in?{" "}
-              <span className={styles.conditions}>Get help</span>
+              <span className="conditions">Get help</span>
             </p>
           </div>
-        </div>
+        </Inputcontainer>
       </div>
-    </div>
+    </LoginContainer>
+    </>
   );
 }
+
+const LoginContainer = styled.div`
+  width: 100%;
+  height: 85vh;
+  padding-top: 15vh;
+  background-color: rgb(253,239,235);
+  .logindiv{
+    width: 30%;
+    height: 75vh;
+    background-color: rgb(249, 249, 252);
+    margin: auto;
+  }
+`;
+
+const CouponImg = styled.div`
+  width: 100%;
+  height: 20vh;
+  background-color: rgb(252, 253, 253);
+  .couponcode{
+    width: 100%;
+    margin: auto;
+  }
+`;
+
+const Inputcontainer = styled.div`
+  width: 100%;
+  background-color: white;
+  padding: 7rem 3rem;
+  height: 100%;
+  text-align: left;
+  color: rgb(66,69,83);
+  .heading{
+    font-weight: 600;
+    font-size: 22px;
+  }
+  .heading1{
+    font-weight: 600;
+    font-size: 22px;
+  }
+  .heading2{
+      font-weight: 300;
+      font-size: 15px;
+      margin: 0px 8px ;
+      margin-top: 5px;
+  }
+  .conditions{
+    font-weight: 400;
+    font-size: 15px;
+    color: rgb(255,63,108);
+    cursor: pointer;    
+  }
+  .terms{
+    width: 100%;
+    font-size: 15px;
+    margin-top: 15px;
+  }
+  .loginbutton{
+    width: 100%;
+    height:auto;
+    border: 1px solid black;
+    padding: 1.2rem 0rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    font-size: 22px;
+    cursor: pointer;
+    margin-top: 3rem;
+  }
+`;
 
 export default Login;

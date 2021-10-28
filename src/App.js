@@ -4,6 +4,7 @@ import LoginScreen from "./components/User/Login/Login";
 import MemoryFlip from "./components/Games/MemoryFlipGame/MemoryFlip";
 import ProductDetails from "./components/Products/ProductDetails";
 import Home from "./components/Home";
+require('dotenv').config();
 
 function App() {
   return (

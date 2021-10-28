@@ -1,5 +1,5 @@
 import {ActionTypes} from "../contants/actionTypes"
-import fakeStore from "../../apis/fakeStore"
+import fakeStore from "../../apis/baseAPI"
 
 
 export const fetchProducts = ()=> async function(dispatch){

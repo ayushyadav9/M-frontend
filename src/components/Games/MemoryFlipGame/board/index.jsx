@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import Card from "./../card";
+import Card from "../card";
 
 function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, products }) {
   const [flipped, setFlipped] = useState([]);

@@ -1,5 +1,5 @@
 import {  UserOutlined, HeartOutlined, ShoppingOutlined,  } from '@ant-design/icons';
-export const Icons = [{icon:<UserOutlined />,name:"Profile"}, {icon:<HeartOutlined />,name:"Wishlist"}, {icon:<ShoppingOutlined />,name:"Bag"}]
+export const Icons = [{icon:<UserOutlined />,name:"Profile",link:"/login"}, {icon:<HeartOutlined />,name:"Wishlist",link:"/"}, {icon:<ShoppingOutlined />,name:"Bag",link:"/"}]
 export const Filtertype = [{type:"MEN"},{type:"WOMEN"},{type:"KIDS"},{type:"CATEGORY"},{type:"BRAND"}]
 export const CheckedProduct = [{product_name:"Tshirts", number:"(11569)"}, {product_name:"Tops", number:"(11569)"}, {product_name:"Shoes", number:"(11569)"},{product_name:"Shirts", number:"(6758)"},{product_name:"Heels", number:"(9768)"}]
 export const CheckedBrand = [{product_name:"Puma", number:"(11569)"}, {product_name:"Macmerise", number:"(11569)"}, {product_name:"Roadster", number:"(11569)"},{product_name:"DressBerry", number:"(6758)"},{product_name:"Max", number:"(9768)"}]
