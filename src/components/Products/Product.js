@@ -6,7 +6,7 @@ import { Space, Radio, Checkbox } from "antd";
 import ProductTile from "./ProductTile";
 
 const Product = () => {
-  const products = useSelector((state) => state.allProducts.products);
+  const products = useSelector((state) => state.allProducts.categoryProd);
 
   return (
     <>

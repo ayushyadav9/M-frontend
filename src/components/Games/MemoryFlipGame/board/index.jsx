@@ -74,8 +74,16 @@ function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, produ
     if (flipped.length === 0) {
       setFlipped([id]);
       setDisabled(false);
+      setGameStats((prev) => ({
+        ...prev,
+        moves: prev.moves + 1,
+      }));
     } else if (!flipped.includes(id)) {
       setFlipped([flipped[0], id]);
+      setGameStats((prev) => ({
+        ...prev,
+        moves: prev.moves + 1,
+      }));
       if (isMatch(id)) {
         setMatched([...matched, flipped[0], id]);
         resetFlipped();

@@ -1,9 +1,10 @@
 import styled from "styled-components";
-// import SlidingGame from "../Games/SlidingGame/Game";
+import SlidingGame from "../Games/SlidingGame/Game";
 import MemoryFlipGame from "../Games/MemoryFlipGame/MemoryFlip";
+import GuessPrice from "../Games/GuessPriceGame/GuessPrice";
 import Timer from "../Games/SlidingGame/Timer";
 
-const Popup = ({ handleClose, product, products }) => {
+const Popup = ({ handleClose, product, products, gameType }) => {
   return (
     <PopupContainer>
       {console.log("Game Clicked")}
@@ -33,9 +34,17 @@ const Popup = ({ handleClose, product, products }) => {
             </div>
           </div>{" "} */}
 
-          <div style={{ float: "left", marginLeft: "70px" }}>
+          {/* <div style={{ float: "left", marginLeft: "70px" }}>
             <MemoryFlipGame products={products} />
-          </div>
+          </div> */}
+          {gameType === "memory-flip" && <MemoryFlipGame products={products} />}
+          {gameType === "sliding-game" && (
+            <SlidingGame thumbnailImg={product.searchImage} />
+          )}
+          {gameType === "guess-prize" && (
+            <GuessPrice product={product} maxValue={10000} />
+          )}
+
           {/* Timer */}
           <span style={{ textAlign: "center" }}>
             <Timer />
