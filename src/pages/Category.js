@@ -15,6 +15,7 @@ const Category = (props) => {
     return () => {
       dispatch(removeCategoryProduct());
     };
+    // eslint-disable-next-line
   }, [props.match.params.category]);
   return (
     <>

@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
-import product from "./demo.js";
 
 GuessPrice.defaultProps = {
-  maxValue: 10000,
-  product: product,
+  maxValue: 10000
 };
 
 const markBuilder = (min, max, step) => {
