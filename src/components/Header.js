@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Filtertype, Icons } from "./utils/utils";
+import { navData, Icons } from "./utils/utils";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -17,14 +17,28 @@ const Header = () => {
       </div>
 
       <div className="navbar__menuSpace">
-        {Filtertype.map((fil_type, index) => {
+        {navData.map((fil_type, index) => {
           return (
-            <StyledLink to={`/category/${fil_type.link}`}>
-              <div key={index}>{fil_type.type}</div>
-            </StyledLink>
+            <LinkContainer key={index}>
+              <StyledLink to={`/gender/${fil_type.link}`}>
+                <div style={{textAlign:"center"}} >{fil_type.title}</div>
+              </StyledLink>
+              <SearchDiv >
+                <h5 className="navLinks3">{fil_type.sub}</h5>
+                {fil_type.list.map((el,z)=>{
+                  return(
+                        <Navtitle key = {z}className="navLinks2">
+                          <StyledLink to={`/category/${el.link}`}>{el.name.toUpperCase()}</StyledLink>
+                        </Navtitle>     
+                      )
+                    })}    
+              </SearchDiv>
+            </LinkContainer>
           );
         })}
       </div>
+
+      
       <div className="navbar__searchSpace">
         <div className="wrapper">
           <div className="search-icon">🔎︎</div>
@@ -40,7 +54,7 @@ const Header = () => {
       <div className="navbar__profileSpace">
         {Icons.map((iconsView, index) => {
           return (
-            <StyledLink to={iconsView.link} key={index}>
+            <StyledLinks to={iconsView.link} key={index}>
               <div>
                 <div className="profileSpace__watchListView">
                   <div>{iconsView.icon}</div>
@@ -48,7 +62,7 @@ const Header = () => {
                 </div>
                 <div className="profileSpace__iconName">{iconsView.name}</div>
               </div>
-            </StyledLink>
+            </StyledLinks>
           );
         })}
       </div>
@@ -58,8 +72,72 @@ const Header = () => {
 
 export default Header;
 
+const SearchDiv=styled.div`
+    display: none;
+    position: absolute;
+    width: 12%;
+    height: 42vh;
+    margin-top: 12px;
+    marging-left:-20px;
+    background-color: white;
+    text-align: left;
+    transition-delay:20s;
+    transition-duration: 2s;
+    padding-top:20px;
+    padding-left:20px;
+    .navLinks3{
+      text-decoration: none;
+      color:rgb(243, 73, 101) ;
+      font-size: 12px;      
+  }
+`
+const Navtitle = styled.p`
+    font-size: 12px;
+    background-color: white;
+    &:hover ${SearchDiv}{
+        display :block;
+       transition-duration: 2s;
+       transition-delay:20s;
+    }
+    .navLinks2{
+      text-decoration: none;
+      color:rgb(40,44,63) ;
+      font-size: 13.5px;
+      margin-left: 20px;
+      padding-left: 50px;
+  }
+  .navLinks2:hover{
+      color:black ;
+      font-weight: 600;
+      font-size: 14px;
+  }
+`
+
+const LinkContainer= styled.div`
+    width: 30%;
+    margin:2%;
+    margin-top: 16px;
+    height: 5vh;
+    background-color:white;
+    padding-top: 4px;
+
+&:hover{
+  
+    border-bottom: 4px solid #f04d68;
+    cursor: pointer;
+    
+}
+&:hover ${SearchDiv}{
+transition-delay:20s;
+transition-duration: 2s;
+ display :block;
+}
+`
+
+
 const NavbarWrapper = styled.div`
   display: flex;
+  width: 100%;
   align-items: center;
   height: 70px;
   position: fixed;
@@ -72,10 +150,12 @@ const NavbarWrapper = styled.div`
   }
 
   .navbar__iconSpace {
-    width: 12%;
+    margin: 2rem;
+    width: 16%;
   }
   .navbar__menuSpace {
     width: 30rem;
+    margin-right: 10rem;
     display: flex;
     justify-content: space-evenly;
     font-size: 13px;
@@ -140,4 +220,9 @@ const NavbarWrapper = styled.div`
 `;
 const StyledLink = styled(Link)`
   color: black;
+`;
+
+const StyledLinks = styled(Link)`
+  color: black;
+  margin:10px
 `;

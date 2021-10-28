@@ -15,9 +15,15 @@ export const fetchProduct = (id) =>
 
 export const fetchProductByCategory = (cat) =>
   async function (dispatch) {
-    const response = await fakeStore.get(`/getProducts/${cat}`);
+    const response = await fakeStore.get(`/getProducts?category=${cat}`);
     dispatch({ type: ActionTypes.SET_CATEGORY_PRODUCTS, payload: response.data.data });
   };
+
+export const fetchProductByGender = (gender) =>
+async function (dispatch) {
+  const response = await fakeStore.get(`/getProducts?gender=${gender}`);
+  dispatch({ type: ActionTypes.SET_CATEGORY_PRODUCTS, payload: response.data.data });
+};
 
 export const setProducts = (products) => {
   return {

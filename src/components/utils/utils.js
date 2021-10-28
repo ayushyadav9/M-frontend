@@ -37,3 +37,48 @@ export const Genders = [
   { gender: "Boys" },
   { gender: "Girls" },
 ];
+export const navData=[
+  {title:"MEN",
+  link:"Men",
+  sub:"MEN",
+  list:[{name:"t-shirts",link:"Tshirts"},
+        {name:"casual shirts",link:"Shirts"},
+        {name:"formal Shirts",link:"Shirts"},
+        {name:"jackets",link:"Jackets"},
+        {name:"Sweatshirts",link:"Sweatshirts"},
+        {name:"Sweaters",link:"Sweaters"},
+        {name:"suits",link:"Suits"}]},
+
+  {title:"WOMEN",
+  link:"Women",
+  sub:"WOMEN",
+  list:[{name:"kurtas",link:"Kurtas"},
+        {name:"Dresses",link:"Dresses"},
+        {name:"Tops",link:"Tops"},
+        {name:"ethnic wear",link:"Clothing Set"},
+        {name:"Kurta Sets",link:"Kurta Sets"}]},
+
+  {title:"KIDS",
+  link:"Men",
+  sub:"KIDS",
+        list:[{name:"t-shirts",link:"Tshirts"},
+        {name:"shirts",link:"Shirts"},
+        {name:"jeans",link:"Jeans"},
+        {name:"Track Pants",link:"Track Pants"},
+        {name:"Flip Flops",link:"Flip Flops"}]},
+
+  {title:"GADGETS",
+  link:"Men",
+  sub:"GADGETS",
+  list:[{name:"Watches",link:"Watches"},
+        {name:"Smart Watches",link:"Smart Watches"},
+        {name:"Fitness Bands",link:"Fitness Bands"},
+        {name:"Headphones",link:"Headphones"}]},
+  
+  {title:"FOOTWEAR",
+  link:"Men",
+  sub:"FOOTWEAR",
+  list:[{name:"Formal Shoes",link:"Formal Shoes"},
+        {name:"Flip Flops",link:"Flip Flops"},
+        {name:"Casual Shoes",link:"Casual Shoes"}]}
+]

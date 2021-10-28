@@ -25,7 +25,7 @@ function ProductTile({ product, products, index }) {
               gameType="guess-prize"
             />
           )}
-          <button onClick={togglePopup}>© Ayush Yadav</button>
+          <button onClick={togglePopup} style={{backgroundColor: "#4CAF50"}}> GAME </button>
         </>
       ) : null}
 
@@ -36,7 +36,7 @@ function ProductTile({ product, products, index }) {
           onClick={() => changeAddHeart(product, product.productId)}
           className={`${showHeart ? "fillStar" : "emptyStar"}`}
         >
-          {showHeart ? "❤️" : "♡"}
+          {showHeart ? "♥️" : "♡"}
         </div>
       </div>
       <div className="addproduct_Info">{product.additionalInfo}</div>
