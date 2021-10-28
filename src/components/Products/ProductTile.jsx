@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
 
-function ProductTile({ products, index }) {
+function ProductTile({ product, products, index }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -17,26 +17,28 @@ function ProductTile({ products, index }) {
     <div className="product_Container">
       {index === 5 ? (
         <>
-          {isPopupOpen && <Popup handleClose={togglePopup} products={products} />}
+          {isPopupOpen && (
+            <Popup handleClose={togglePopup} product={product} products={products} />
+          )}
           <button onClick={togglePopup}>© Ayush Yadav</button>
         </>
       ) : null}
 
-      <img src={products.searchImage} className="product_Image" alt="prod" />
+      <img src={product.searchImage} className="product_Image" alt="prod" />
       <div className="movieStar">
-        <div className="brand_Name">{products.brand}</div>
+        <div className="brand_Name">{product.brand}</div>
         <div
-          onClick={() => changeAddHeart(products, products.productId)}
+          onClick={() => changeAddHeart(product, product.productId)}
           className={`${showHeart ? "fillStar" : "emptyStar"}`}
         >
           {showHeart ? "♥" : "♡"}
         </div>
       </div>
-      <div className="addproduct_Info">{products.additionalInfo}</div>
+      <div className="addproduct_Info">{product.additionalInfo}</div>
       <div className="price_Show">
-        <div className="price_view">{"RS." + products.price}</div>
-        <div className="mrp_view">{"RS." + products.mrp}</div>
-        <div className="discount_view">{products.discountDisplayLabel}</div>
+        <div className="price_view">{"RS." + product.price}</div>
+        <div className="mrp_view">{"RS." + product.mrp}</div>
+        <div className="discount_view">{product.discountDisplayLabel}</div>
       </div>
     </div>
   );

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Game from "../games/SlidingGame/Game";
-import Timer from "../games/SlidingGame/Timer";
+// import SlidingGame from "../Games/SlidingGame/Game";
+import MemoryFlipGame from "../Games/MemoryFlipGame/MemoryFlip";
+import Timer from "../Games/SlidingGame/Timer";
 
-const Popup = ({ handleClose, products }) => {
+const Popup = ({ handleClose, product, products }) => {
   return (
     <PopupContainer>
       {console.log("Game Clicked")}
@@ -11,33 +12,34 @@ const Popup = ({ handleClose, products }) => {
           <span className="close-icon" onClick={handleClose}>
             x
           </span>
+          {/* <div style={{ float: "left", marginLeft: "70px" }}>
+            <SlidingGame thumbnailImg={product.searchImage} />
+            Product Tile on Popup
+            <div
+              className="product_Container"
+              style={{ marginLeft: "100px", paddingLeft: "10px", paddingTop: "10px" }}
+            >
+              <img src={product.searchImage} className="product_Image" alt="prod" />
+
+              <div className="movieStar">
+                <div className="brand_Name">{product.brand}</div>
+              </div>
+              <div className="addproduct_Info">{product.additionalInfo}</div>
+              <div className="price_Show">
+                <div className="price_view">{"RS." + product.price}</div>
+                <div className="mrp_view">{"RS." + product.mrp}</div>
+                <div className="discount_view">{product.discountDisplayLabel}</div>
+              </div>
+            </div>
+          </div>{" "} */}
 
           <div style={{ float: "left", marginLeft: "70px" }}>
-            <Game thumbnailImg={products.searchImage} />
+            <MemoryFlipGame products={products} />
           </div>
-
           {/* Timer */}
           <span style={{ textAlign: "center" }}>
             <Timer />
           </span>
-
-          {/* Product Tile on Popup */}
-          <div
-            className="product_Container"
-            style={{ marginLeft: "100px", paddingLeft: "10px", paddingTop: "10px" }}
-          >
-            <img src={products.searchImage} className="product_Image" alt="prod" />
-
-            <div className="movieStar">
-              <div className="brand_Name">{products.brand}</div>
-            </div>
-            <div className="addproduct_Info">{products.additionalInfo}</div>
-            <div className="price_Show">
-              <div className="price_view">{"RS." + products.price}</div>
-              <div className="mrp_view">{"RS." + products.mrp}</div>
-              <div className="discount_view">{products.discountDisplayLabel}</div>
-            </div>
-          </div>
         </div>
       </div>
     </PopupContainer>
