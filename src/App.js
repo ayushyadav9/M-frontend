@@ -13,9 +13,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/product/:productId" component={ProductDetails} />
-          <Route path="/login" component={LoginScreen} />
-          <Route path="/memory" component={MemoryFlip} />
-          <Route>404 Not Found!</Route>
+          <Route path="/login" component={LoginScreen} />          
+          <Route> <h1> 404 Not Found! 🏳️‍🌈</h1></Route>
         </Switch>
       </Router>
     </div>
