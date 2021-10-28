@@ -6,7 +6,6 @@ const Timer = (prop) => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    console.log("Timer Reset");
     let myInterval = setInterval(() => {
       if (seconds >= 0) {
         setSeconds(seconds + 1);

@@ -11,12 +11,18 @@ const Header = () => {
   return (
     <NavbarWrapper>
       <div className="navbar__iconSpace">
-      <StyledLink to="/"><img src="/Images/myntra.png" className="myntra_Icon_View" alt="Myntra" /></StyledLink>
+        <StyledLink to="/">
+          <img src="/Images/myntra.png" className="myntra_Icon_View" alt="Myntra" />
+        </StyledLink>
       </div>
-      
+
       <div className="navbar__menuSpace">
         {Filtertype.map((fil_type, index) => {
-          return <div key={index}>{fil_type.type}</div>;
+          return (
+            <StyledLink to={`/category/${fil_type.link}`}>
+              <div key={index}>{fil_type.type}</div>
+            </StyledLink>
+          );
         })}
       </div>
       <div className="navbar__searchSpace">
@@ -35,13 +41,13 @@ const Header = () => {
         {Icons.map((iconsView, index) => {
           return (
             <StyledLink to={iconsView.link} key={index}>
-            <div >
-              <div className="profileSpace__watchListView">
-                <div>{iconsView.icon}</div>
-                <div className="profileSpace__listCount"></div>
+              <div>
+                <div className="profileSpace__watchListView">
+                  <div>{iconsView.icon}</div>
+                  <div className="profileSpace__listCount"></div>
+                </div>
+                <div className="profileSpace__iconName">{iconsView.name}</div>
               </div>
-              <div className="profileSpace__iconName">{iconsView.name}</div>
-            </div>
             </StyledLink>
           );
         })}
@@ -130,8 +136,8 @@ const NavbarWrapper = styled.div`
     .profileSpace__iconName {
       font-size: 10px;
     }
-  } 
+  }
 `;
 const StyledLink = styled(Link)`
-  color:black
+  color: black;
 `;
