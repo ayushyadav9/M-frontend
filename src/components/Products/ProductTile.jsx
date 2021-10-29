@@ -1,12 +1,40 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import Popup from "./Popup";
 
-function ProductTile({ product, products, index }) {
+
+function ProductTile({ product, products, index, gameType }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const [seconds, setSeconds] = useState(20);
+
+  // useEffect(() => {
+  //   console.log('seconds', seconds);
+  // }, [seconds]);
+
   const togglePopup = () => {
-    setIsPopupOpen((prev) => !prev);
+    console.log("TogglePopup Called");
+   
+    setIsPopupOpen((prev) => {
+      if (prev) {
+        localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
+      }
+      else {
+        const timeData = JSON.parse(localStorage.getItem('time'));
+        if (timeData) {
+          const timeLeft = timeData.seconds;
+          const pauseTime = timeData.pauseTime;
+          const currentTime = Date.now();
+          const timeElapsed = ((currentTime - pauseTime) / 1000 | 0) * (gameType === 'sliding-game' || gameType=== 'memory-flip' ? -1 : 1);
+          setSeconds((timeLeft - timeElapsed > 0) ? (timeLeft - timeElapsed) : 0);
+        }
+        else {
+          const timeLeft = seconds;
+          setSeconds((timeLeft > 0) ? timeLeft : 0);
+        }
+      }
+      return !prev;
+    });
   };
 
   const changeAddHeart = (data, id) => {
@@ -22,10 +50,12 @@ function ProductTile({ product, products, index }) {
               handleClose={togglePopup}
               product={product}
               products={products}
-              gameType="guess-prize"
+              gameType={gameType}
+              seconds={seconds}
+              setSeconds={setSeconds}
             />
           )}
-          <button onClick={togglePopup} style={{backgroundColor: "#4CAF50"}}> GAME </button>
+          <button onClick={togglePopup} style={{ backgroundColor: "#4CAF50" }}> GAME </button>
         </>
       ) : null}
 
@@ -48,5 +78,11 @@ function ProductTile({ product, products, index }) {
     </div>
   );
 }
+
+ProductTile.defaultProps = {
+  //gameType: "guess-prize"
+  //gameType: "memory-flip"
+  gameType: "sliding-game"
+};
 
 export default ProductTile;
