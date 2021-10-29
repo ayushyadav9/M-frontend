@@ -63,6 +63,7 @@ const Grid = (props) => {
               return (
                 <Tile
                   key={number}
+                  tileNumber={number}
                   position={currentPosition}
                   coordinates={coordinates}
                   drawImage={drawImage}
