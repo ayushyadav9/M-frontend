@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { Genders, CheckedProduct, CheckedBrand, CheckedPrice } from "../utils/utils";
 import { Space, Radio, Checkbox } from "antd";
 import ProductTile from "./ProductTile";
 
 const Product = () => {
   const products = useSelector((state) => state.allProducts.categoryProd);
+ 
 
   return (
     <>

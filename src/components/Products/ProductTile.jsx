@@ -1,11 +1,13 @@
 import React, { useState} from "react";
 import Popup from "./Popup";
+import { useSelector } from "react-redux";
 
 
 function ProductTile({ product, products, index, gameType }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
+  const hintId = useSelector((state) => state.hint);
+  console.log(hintId)
   const [seconds, setSeconds] = useState(20);
 
   // useEffect(() => {
@@ -43,7 +45,7 @@ function ProductTile({ product, products, index, gameType }) {
 
   return (
     <div className="product_Container">
-      {index === 1 ? (
+      {product._id ===(hintId.hint.productId?hintId.hint.productId:0) ? (
         <>
           {isPopupOpen && (
             <Popup

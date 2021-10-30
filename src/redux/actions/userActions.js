@@ -17,6 +17,7 @@ export const login = (tokenId) => async dispatch => {
 
         dispatch({ type: ActionTypes.USER_LOGIN_SUCCESS, payload: res.data })
         localStorage.setItem('userInfo', JSON.stringify(res.data))
+        localStorage.setItem('token', res.data.data.token)
         
     } catch (error) {
         dispatch({
