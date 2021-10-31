@@ -1,7 +1,9 @@
 import { ActionTypes } from "../contants/actionTypes";
-
+// console.log(JSON.parse(localStorage.getItem('hint')))
+// JSON.parse(localStorage.getItem('hint'))?JSON.parse(localStorage.getItem('hint')):
 const initialState = {
-    hint:{
+    hint:JSON.parse(localStorage.getItem('hint'))?JSON.parse(localStorage.getItem('hint')):
+    {
       hint:{
         _id:null,
         hintStatement:"",

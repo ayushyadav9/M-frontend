@@ -21,25 +21,50 @@ Game.defaultProps = {
   gameSize: 450,
 };
 
-export default function Game({ gridDimension, gameSize, thumbnailImg }) {
+export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,setSeconds }) {
   const [data, setData] = useState({
     gridModel: GridModel.buildFromSize(gridDimension),
     moves: 0,
   });
+  // const [Solved, setSolved] = useState(false)
 
   useEffect(() => {
     timeouts = [];
     solution = null;
   }, []);
 
+  useEffect(() => {
+    if(data.gridModel.isSolved()){
+      //Post Req
+      
+      console.log(data.moves)
+      console.log(seconds)
+      setSeconds(0);
+      //Remove Hint if the puzzle is solved
+      localStorage.removeItem('hint')
+  
+      setTimeout(() => {
+        alert("Hurray Solved!!!")
+      }, 500);  
+    }
+    // eslint-disable-next-line
+  }, [data.gridModel.isSolved()])
+
   const hint = () => {
-    if (!isSolving()) {
-      if (!solution) {
-        solution = new SolverModel(data.gridModel).solve();
-      }
-      if (solution && solution.length > 0) {
-        let direction = solution.shift();
-        move(direction);
+    if (window.confirm("Using hint will panalize you!!!")) {
+      if (!isSolving()) {
+        if (!solution) {
+          solution = new SolverModel(data.gridModel).solve();
+        }
+        if (solution && solution.length > 0) {
+          let direction = solution.shift();
+          move(direction);
+          setData((prev) => ({
+            ...prev,
+            gridModel: prev.gridModel,
+            moves: prev.moves + 4,
+          }));
+        }
       }
     }
   };
@@ -54,6 +79,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg }) {
   };
 
   const isSolving = () => {
+
     return timeouts.length ? true : false;
   };
 
@@ -84,28 +110,29 @@ export default function Game({ gridDimension, gameSize, thumbnailImg }) {
   };
 
   const solve = () => {
-    if (!isSolving()) {
-      if (!solution) {
-        solution = new SolverModel(data.gridModel).solve();
-      }
-      if (solution && solution.length > 0) {
-        let delay = 100;
-        const updateTimeout = (n) => {
-          timeouts.push(
-            setTimeout(function () {
-              move(solution[n]);
-            }, delay)
-          );
-        };
+    if (window.confirm("You will not be awarded for this puzzle!!!!")) {
+      if (!isSolving()) {
+        if (!solution) {
+          solution = new SolverModel(data.gridModel).solve();
+        }
+        if (solution && solution.length > 0) {
+          let delay = 100;
+          const updateTimeout = (n) => {
+            timeouts.push(
+              setTimeout(function () {
+                move(solution[n]);
+              }, delay)
+            );
+          };
 
-        for (let i = 0; i < solution.length; i++) {
-          updateTimeout(i);
-          delay = delay + 100;
+          for (let i = 0; i < solution.length; i++) {
+            updateTimeout(i);
+            delay = delay + 100;
+          }
         }
       }
     }
   };
-
   return (
     <GameWrapper gameSize={gameSize} gridDimension={gridDimension}>
       <div id="game">

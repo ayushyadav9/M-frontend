@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import Popup from "./Popup";
 import { useSelector } from "react-redux";
 
@@ -7,12 +7,9 @@ function ProductTile({ product, products, index, gameType }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const hintId = useSelector((state) => state.hint);
-  console.log(hintId)
+  
   const [seconds, setSeconds] = useState(20);
-
-  // useEffect(() => {
-  //   console.log('seconds', seconds);
-  // }, [seconds]);
+  
 
   const togglePopup = () => {
     console.log("TogglePopup Called");

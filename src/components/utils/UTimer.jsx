@@ -7,25 +7,26 @@ function formatTime(s) {
   return min + ":" + sec;
 }
 
-const Timer = ({seconds, setSeconds}) => {
-
+const Timer = ({ seconds, setSeconds }) => {
   useEffect(() => {
-    let myInterval = setInterval(() => {
-      setSeconds((prev) => prev + 1);
-    }, 1000);
-    return () => {
-      clearInterval(myInterval);
-    };
+    if (seconds !== 0) {
+      let myInterval = setInterval(() => {
+        setSeconds((prev) => prev + 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(myInterval);
+      };
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [seconds]);
 
   return (
     <div>
-      {seconds === 0 ? null : (
-        <h1>
-          {" "}
-          {formatTime(seconds)}
-        </h1>
+      {seconds === 0 ? (
+        <h1> {formatTime(0)}</h1>
+      ) : (
+        <h1> {formatTime(seconds)}</h1>
       )}
     </div>
   );

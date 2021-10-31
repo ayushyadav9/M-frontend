@@ -6,6 +6,8 @@ import UTimer from "../utils/UTimer";
 import Dtimer from "../utils/DTimer"
 
 const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds}) => {
+  
+  
   return (
     <PopupContainer>
       <div className="popup-box">
@@ -16,7 +18,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds}) 
 
           {gameType === "memory-flip" && <MemoryFlipGame products={products} />}
           {gameType === "sliding-game" && (
-            <SlidingGame thumbnailImg={product.searchImage} />
+            <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds}/>
           )}
           {gameType === "guess-prize" && (
             <GuessPrice product={product} maxValue={10000} />

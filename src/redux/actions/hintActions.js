@@ -10,6 +10,6 @@ export const getHint = () =>
       }
       }
     const response = await fakeStore.get("/getHint",config);
-    
+    localStorage.setItem("hint", JSON.stringify(response.data.data))
     dispatch({ type: ActionTypes.SET_HINT, payload: response.data.data });
   };
