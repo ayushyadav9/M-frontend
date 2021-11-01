@@ -26,8 +26,8 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds}) 
 
           {/* Timer */}
           <span style={{ textAlign: "center" }}>
-            { (gameType === "memory-flip" || gameType === "sliding-game") && <UTimer seconds={seconds} setSeconds={setSeconds}/>}
-            {gameType === "guess-prize" && <Dtimer seconds={seconds} setSeconds={setSeconds}/>}
+            { (gameType === "memory-flip" || gameType === "sliding-game")?  <UTimer seconds={seconds} setSeconds={setSeconds}/>
+            :<Dtimer seconds={seconds} setSeconds={setSeconds}/>}
           </span>
 
         </div>

@@ -18,6 +18,8 @@ export const hintReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case ActionTypes.SET_HINT:
         return { ...state, hint: payload };
+      case ActionTypes.REMOVE_HINT:
+        return initialState;
       default:
         return state;
     }

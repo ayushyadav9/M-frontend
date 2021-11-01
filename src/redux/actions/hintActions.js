@@ -13,3 +13,9 @@ export const getHint = () =>
     localStorage.setItem("hint", JSON.stringify(response.data.data))
     dispatch({ type: ActionTypes.SET_HINT, payload: response.data.data });
   };
+
+  export const removeHint = () => {
+    return {
+      type: ActionTypes.REMOVE_HINT,
+    };
+  };

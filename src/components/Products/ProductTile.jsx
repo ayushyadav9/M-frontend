@@ -8,12 +8,10 @@ function ProductTile({ product, products, index, gameType }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const hintId = useSelector((state) => state.hint);
   
-  const [seconds, setSeconds] = useState(20);
+  const [seconds, setSeconds] = useState(1);
   
 
   const togglePopup = () => {
-    console.log("TogglePopup Called");
-   
     setIsPopupOpen((prev) => {
       if (prev) {
         localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))

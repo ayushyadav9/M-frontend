@@ -5,6 +5,8 @@ import ScoreBoard from "./ScoreBoard.jsx";
 import GridModel from "./models/Grid";
 import SolverModel from "./models/Solver";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { removeHint } from "../../../redux/actions/hintActions";
 
 let solution;
 let timeouts = [];
@@ -14,6 +16,12 @@ function clearTimeouts() {
     clearTimeout(timeouts[i]);
   }
   timeouts = [];
+}
+
+function formatTime(s) {
+  let min = ((s / 60) | 0).toString().padStart(2, "0");
+  let sec = (s % 60).toString().padStart(2, "0");
+  return min + ":" + sec;
 }
 
 Game.defaultProps = {
@@ -26,7 +34,11 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
     gridModel: GridModel.buildFromSize(gridDimension),
     moves: 0,
   });
-  // const [Solved, setSolved] = useState(false)
+  const dispatch = useDispatch();
+  const [isSolUsed, setisSolUsed] = useState(false)
+  const [score, setscore] = useState(0)
+  const [timeTaken, settimeTaken] = useState(null)
+  const [currentScore, setcurrentScore] = useState(0)
 
   useEffect(() => {
     timeouts = [];
@@ -34,15 +46,53 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   }, []);
 
   useEffect(() => {
+    if(data.moves!==0 && seconds!==0){
+      setcurrentScore(Math.round(10000/(seconds*data.moves)))
+    }
+  }, [data.moves,seconds])
+
+  useEffect(() => {
     if(data.gridModel.isSolved()){
       //Post Req
+      settimeTaken(seconds)
+        fetch("http://localhost:5000/sendScore", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({gametype :"sliding",moves: data.moves,time: seconds,isSolused:isSolUsed})
+        })
+          .then((res) => res.json())
+          .then(
+            (result) => {
+              console.log(result)
+              if (result.success) {
+                setscore(result.data.score)
+              } else {
+                console.log(result.message)
+              }
+            },
+            (error) => {
+              console.log(error)
+            }
+          );
+      setTimeout(() => {
+        setData((prev) => ({
+          ...prev,
+          gridModel: prev.gridModel,
+          moves: 0,
+        }));
+      }, 10000);
       
-      console.log(data.moves)
-      console.log(seconds)
       setSeconds(0);
       //Remove Hint if the puzzle is solved
       localStorage.removeItem('hint')
-  
+      localStorage.removeItem('time')
+      //Gugad
+      setTimeout(() => {
+        dispatch(removeHint());
+      }, 10000);
       setTimeout(() => {
         alert("Hurray Solved!!!")
       }, 500);  
@@ -111,6 +161,8 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
 
   const solve = () => {
     if (window.confirm("You will not be awarded for this puzzle!!!!")) {
+      setcurrentScore(0)
+      setisSolUsed(true);//Solve it for me Used
       if (!isSolving()) {
         if (!solution) {
           solution = new SolverModel(data.gridModel).solve();
@@ -152,6 +204,12 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
           />
         </div>
       </div>
+      <div id="score">
+        <h2 > Your Current Score {currentScore} 
+        <br/> {score? <span>{`Your Total score: ${Math.round(score)}`}</span>:""}
+        <br/> {timeTaken && <span>Time Taken: {formatTime(timeTaken)}</span>}
+        </h2>
+      </div>
     </GameWrapper>
   );
 }
@@ -159,9 +217,13 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
 const GameWrapper = styled.div`
   // padding: 25px;
   #game {
+    float:left;
     // margin: auto;
     // width: 670px;
-
+    #score{
+      margin-left: 781px;
+      float:right;
+    }
     #grid {
       display: inline-block;
       width: ${(props) => `${props.gameSize}px`};
