@@ -55,7 +55,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
     if(data.gridModel.isSolved()){
       //Post Req
       settimeTaken(seconds)
-        fetch("http://localhost:5000/sendScore", {
+        fetch("https://myntrah-backend.herokuapp.com/sendScore", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
