@@ -147,15 +147,6 @@ function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, produ
         row.push(col);
       }
       rowMarkup.push(row);
-      /*
-            // This markup was being used to build a resposive board using flex-conatiner rows and flex item columns/cells
-            // Ultimately, decided to go with Semantic UI convention
-            (
-                <div className="flex-container" key={`row${rowMarkup.length+1}`}>
-                  {row}
-                </div>
-            )
-            */
     }
 
     return rowMarkup;

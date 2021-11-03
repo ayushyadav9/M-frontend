@@ -93,10 +93,10 @@ const CouponImg = styled.div`
 `;
 
 const Inputcontainer = styled.div`
-  width: 100%;
+  width: 77%;
   background-color: white;
   padding: 7rem 3rem;
-  height: 100%;
+  height: 20%;
   text-align: left;
   color: rgb(66,69,83);
   .heading{

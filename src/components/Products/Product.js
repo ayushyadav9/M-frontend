@@ -222,7 +222,7 @@ const ProductShow = styled.div`
   flex-wrap: wrap;
 
   .product_Container {
-    width: 19%;
+    width: 18.2%;
     display: inline-block;
     margin: 5px;
     background: border-box;

@@ -1,4 +1,3 @@
-import "semantic-ui-css/semantic.css";
 import "./MemoryFlip.css";
 import React, { useState, useEffect } from "react";
 import Board from "./board";
