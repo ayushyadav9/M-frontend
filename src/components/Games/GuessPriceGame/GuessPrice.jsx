@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
@@ -17,13 +17,44 @@ const markBuilder = (min, max, step) => {
 
 function GuessPrice(props) {
   const [value, setValue] = useState([props.maxValue * 0.4, props.maxValue * 0.6]);
-
+  const [disabl, setdisabl] = useState(false)
+  const ref = useRef(null)
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const [userScore, setuserScore] = useState(null)
+
+  useEffect(() => {
+    if(props.seconds===0){
+      ref.current.click()
+    }
+  }, [props.seconds])
+
 
   const FinalResponse = () => {
-    console.log(value);
+    setdisabl(true)
+    props.setSeconds(0)
+    fetch("https://myntrah-backend.herokuapp.com/sendScore", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({gametype :"guess-price",data: value,correct:props.product.mrp})
+        })
+          .then((res) => res.json())
+          .then(
+            (result) => {
+              if (result.success) {
+                setuserScore(result)
+              } else {
+                console.log(result)
+              }
+            },
+            (error) => {
+              console.log(error)
+            }
+          );
   };
   return (
     <GuessPriceWrapper>
@@ -55,7 +86,13 @@ function GuessPrice(props) {
             Guess the price range of the product! The closer you are and smaller the range
             the better your score!
           </h2>
-          <button onClick={FinalResponse}>Submit Response</button>
+          <button disabled={disabl} ref={ref} onClick={FinalResponse}>Submit Response</button>
+          <h4>{userScore&&<>
+            {userScore.message}<br/>
+            Correct Price: {props.product.mrp} <br/>
+            Your Current Score: {Math.round(userScore.data.currentScore)}<br/>
+            Your Total Score: {Math.round(userScore.data.totalScore)}<br/>
+          </>}</h4>
         </GameDesciption>
       </div>
 

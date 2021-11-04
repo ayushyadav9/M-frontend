@@ -7,7 +7,8 @@ import ProductTile from "./ProductTile";
 
 const Product = () => {
   const products = useSelector((state) => state.allProducts.categoryProd);
- 
+  const games = ["guess-prize","sliding-game"]
+  const game =  games[Math.floor(Math.random() * games.length)];
 
   return (
     <>
@@ -102,6 +103,7 @@ const Product = () => {
                 product={product}
                 index={index}
                 products={products}
+                game={game}
               />
             ))}
         </ProductShow>

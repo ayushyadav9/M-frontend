@@ -7,7 +7,6 @@ import Dtimer from "../utils/DTimer"
 
 const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds}) => {
   
-  
   return (
     <PopupContainer>
       <div className="popup-box">
@@ -21,7 +20,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds}) 
             <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds}/>
           )}
           {gameType === "guess-prize" && (
-            <GuessPrice product={product} maxValue={10000} />
+            <GuessPrice seconds={seconds} setSeconds={setSeconds} product={product} maxValue={10000} />
           )}
 
           {/* Timer */}

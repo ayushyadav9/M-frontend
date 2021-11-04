@@ -3,23 +3,18 @@ import Coupon from "./images/Coupon.png";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import { login } from "../../../redux/actions/userActions";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Header from "../../Header";
 
 function Login() {
   let history = useHistory();
-  const userLogin = useSelector((state) => state.userLogin);
+  // const userLogin = useSelector((state) => state.userLogin);
   const dispatch = useDispatch()
 
   const successGoogle = async (res) => {
-    dispatch(login(res.tokenId))
-     if(userLogin.userInfo.success){
-      history.push("/")
-     }
-     else{
-       alert(userLogin.userInfo.error)
-     }
+    await dispatch(login(res.tokenId))
+    history.push("/")
   };
 
   return (

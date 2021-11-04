@@ -3,17 +3,17 @@ import Popup from "./Popup";
 import { useSelector } from "react-redux";
 
 
-function ProductTile({ product, products, index, gameType }) {
+function ProductTile({ product, products, index, game }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const hintId = useSelector((state) => state.hint);
   
-  const [seconds, setSeconds] = useState(1);
+  const [seconds, setSeconds] = useState(20);
   
-
   const togglePopup = () => {
     setIsPopupOpen((prev) => {
       if (prev) {
+        setSeconds(20)
         localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
       }
       else {
@@ -22,7 +22,7 @@ function ProductTile({ product, products, index, gameType }) {
           const timeLeft = timeData.seconds;
           const pauseTime = timeData.pauseTime;
           const currentTime = Date.now();
-          const timeElapsed = ((currentTime - pauseTime) / 1000 | 0) * (gameType === 'sliding-game' || gameType=== 'memory-flip' ? -1 : 1);
+          const timeElapsed = ((currentTime - pauseTime) / 1000 | 0) * (game=== 'sliding-game' || game=== 'memory-flip' ? -1 : 1);
           setSeconds((timeLeft - timeElapsed > 0) ? (timeLeft - timeElapsed) : 0);
         }
         else {
@@ -47,7 +47,7 @@ function ProductTile({ product, products, index, gameType }) {
               handleClose={togglePopup}
               product={product}
               products={products}
-              gameType={gameType}
+              gameType={game}
               seconds={seconds}
               setSeconds={setSeconds}
             />
@@ -76,10 +76,10 @@ function ProductTile({ product, products, index, gameType }) {
   );
 }
 
-ProductTile.defaultProps = {
-  //gameType: "guess-prize"
-  //gameType: "memory-flip"
-  gameType: "sliding-game"
-};
+// ProductTile.defaultProps = {
+//   //gameType: "guess-prize"
+//   //gameType: "memory-flip"
+//   gameType: "sliding-game"
+// };
 
 export default ProductTile;
