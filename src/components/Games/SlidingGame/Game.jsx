@@ -5,8 +5,7 @@ import ScoreBoard from "./ScoreBoard.jsx";
 import GridModel from "./models/Grid";
 import SolverModel from "./models/Solver";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { removeHint } from "../../../redux/actions/hintActions";
+
 
 let solution;
 let timeouts = [];
@@ -34,7 +33,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
     gridModel: GridModel.buildFromSize(gridDimension),
     moves: 0,
   });
-  const dispatch = useDispatch();
+
   const [isSolUsed, setisSolUsed] = useState(false)
   const [score, setscore] = useState(0)
   const [timeTaken, settimeTaken] = useState(null)
@@ -91,9 +90,6 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
       localStorage.removeItem('hint')
       localStorage.removeItem('time')
       //Gugad
-      setTimeout(() => {
-        dispatch(removeHint());
-      }, 10000);
       setTimeout(() => {
         alert("Hurray Solved!!!")
       }, 500);  
