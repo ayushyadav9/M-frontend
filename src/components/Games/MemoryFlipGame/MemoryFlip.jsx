@@ -52,7 +52,7 @@ function MemoryFlip({ gridSize, products,seconds,setSeconds }) {
         dispatch(removeHint());
       }, 10000);
     }
-
+    // eslint-disable-next-line
   }, [viewOption]);
 
   return (
