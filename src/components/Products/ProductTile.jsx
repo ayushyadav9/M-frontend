@@ -3,13 +3,14 @@ import Popup from "./Popup";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeHint } from "../../redux/actions/hintActions";
+import { useHistory } from "react-router";
 
 function ProductTile({ product, products, index, game }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const hintId = useSelector((state) => state.hint);
   const [gameOver, setgameOver] = useState(false);
-
+  const history = useHistory()
   const [seconds, setSeconds] = useState(game==="guess-prize" ? 20 : 1);
   const dispatch = useDispatch();
   const togglePopup = () => {
@@ -19,6 +20,9 @@ function ProductTile({ product, products, index, game }) {
         if (!gameOver) localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
         else{
             dispatch(removeHint());
+            setTimeout(() => {
+              history.push("/")
+            }, 1000);
           if(game === "guess-prize"){
             setSeconds(20);
           }

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import ProductPage from "./Products/ProductListing";
 import Hints from "./Hints/Hints";
 import { useDispatch } from "react-redux";
 import { getHint } from "../redux/actions/hintActions";
 import "react-sliding-pane/dist/react-sliding-pane.css";
-import { Link } from "react-router-dom";
 import Header from "./Header";
 import "./myntra.css"
 import "semantic-ui-css/semantic.css";
+import Sidebar from "./Sidebar";
+import Homepage from "./Homepage/Homepage";
 
 const Home = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const [classn, setclassn] = useState("collapsed");
+  
   const handleClose = () => {
     setIsPopupOpen((prev) => {
       return !prev;
@@ -26,72 +26,14 @@ const Home = () => {
     dispatch(getHint());
     // eslint-disable-next-line
   }, []);
-  const handelsidebar = () => {
-    if (classn === "expanded") {
-      setclassn("collapsed");
-    } else {
-      setclassn("expanded");
-    }
-  };
+  
 
   return (
     <>
       <Header />
-
       {isPopupOpen && <Hints handleClose={handleClose}/>}
-      <div
-        onClick={handelsidebar}
-        className={` FreeShippingBanner-sidebar FreeShippingBanner-sidebar-${classn}`}>
-        <div className={` FreeShippingBanner-arrow FreeShippingBanner-arrow-${classn}`}></div>
-        <p className="FreeShippingBanner-sidebar-content"> Myntra  Heist  69</p>
-      </div>
-      {classn==="expanded" &&
-      <div className={`FreeShippingBanner-banner-${classn}`}>
-        <div className="FreeShippingBanner-first-row">
-          <div className="FreeShippingBanner-description">
-            <div className="FreeShippingBanner-pre-header">AVAIL FLAT</div>
-            <div className=" FreeShippingBanner-header FreeShippingBanner-header-primary">
-              ₹500 OFF
-            </div>
-            <div className=" FreeShippingBanner-header FreeShippingBanner-header-secondary">
-              + FREE DELIVERY
-            </div>
-          </div>
-          <div className="FreeShippingBanner-image">
-            <img
-              className="FreeShippingBanner-imageContent"
-              src="/images/tt.png"
-              alt=""
-            />
-          </div>
-        </div>
-        <div className="FreeShippingBanner-second-row">
-          <div className="FreeShippingBanner-coupon">
-            <div>
-              <span className="FreeShippingBanner-text">Coupon Code:</span>
-              <span className="FreeShippingBanner-code">HAGRYA69</span>
-            </div>
-            <div className="FreeShippingBanner-footer">
-              {" "}
-              Applicable on your first order
-            </div>
-          </div>
-          <div className="FreeShippingBanner-signup">
-            <Link className="FreeShippingBanner-button" to="/login">
-              <div className="FreeShippingBanner-text">SIGN UP NOW &gt;</div>
-            </Link>
-          </div>
-        </div>
-        <div className="FreeShippingBanner-trust-builders">
-          <div className="FreeShippingBanner-item">
-            <span className="FreeShippingBanner-text">
-              Easy Exchanges &amp; Returns
-            </span>
-          </div>
-        </div>
-      </div>}
-
-      <ProductPage />
+      <Sidebar/>
+      <Homepage/>
     </>
   );
 };
