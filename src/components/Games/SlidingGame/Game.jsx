@@ -29,7 +29,7 @@ Game.defaultProps = {
   gameSize: 450,
 };
 
-export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,setSeconds }) {
+export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,setSeconds ,setgameOver}) {
   const [data, setData] = useState({
     gridModel: GridModel.buildFromSize(gridDimension),
     moves: 0,
@@ -54,6 +54,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   useEffect(() => {
     if(data.gridModel.isSolved()){
       //Post Req
+      setgameOver(true);
       settimeTaken(seconds)
         fetch("https://myntrah-backend.herokuapp.com/sendScore", {
           method: "POST",

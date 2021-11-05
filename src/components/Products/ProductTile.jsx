@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Popup from "./Popup";
 import { useSelector } from "react-redux";
 
@@ -7,27 +7,48 @@ function ProductTile({ product, products, index, game }) {
   const [showHeart, setShowHeart] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const hintId = useSelector((state) => state.hint);
-  
-  const [seconds, setSeconds] = useState(20);
-  
+  const [gameOver, setgameOver] = useState(false);
+
+  const [seconds, setSeconds] = useState(game==="guess-prize" ? 20 : 1);
+
   const togglePopup = () => {
     setIsPopupOpen((prev) => {
       if (prev) {
-        setSeconds(20)
-        localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
+        //setSeconds(20);
+        //if popup is to be closed
+        
+        if (!gameOver) localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
+        else{
+          if(game === "guess-prize"){
+            setSeconds(20);
+          }
+          else {
+            setSeconds(1);
+          }
+        }
       }
       else {
-        const timeData = JSON.parse(localStorage.getItem('time'));
-        if (timeData) {
-          const timeLeft = timeData.seconds;
-          const pauseTime = timeData.pauseTime;
-          const currentTime = Date.now();
-          const timeElapsed = ((currentTime - pauseTime) / 1000 | 0) * (game=== 'sliding-game' || game=== 'memory-flip' ? -1 : 1);
-          setSeconds((timeLeft - timeElapsed > 0) ? (timeLeft - timeElapsed) : 0);
+        //popup is to be opened
+        if (!gameOver) {
+          console.log("heree");
+          const timeData = JSON.parse(localStorage.getItem('time'));
+          if (timeData) {
+            console.log("here2");
+            const timeLeft = timeData.seconds;
+            const pauseTime = timeData.pauseTime;
+            const currentTime = Date.now();
+            const timeElapsed = ((currentTime - pauseTime) / 1000 | 0) * (game === 'sliding-game' || game === 'memory-flip' ? -1 : 1);
+            setSeconds((timeLeft - timeElapsed > 0) ? (timeLeft - timeElapsed) : 0);
+          }
+          else {
+            const timeLeft = seconds;
+            setSeconds((timeLeft >= 0) ? timeLeft : 1);
+            //setSeconds(20)
+          }
         }
-        else {
-          const timeLeft = seconds;
-          setSeconds((timeLeft > 0) ? timeLeft : 0);
+        else{
+          setSeconds(game==="guess-prize" ? 20 : 1);
+          //setSeconds(20);
         }
       }
       return !prev;
@@ -40,7 +61,7 @@ function ProductTile({ product, products, index, game }) {
 
   return (
     <div className="product_Container">
-      {product._id ===(hintId.hint.productId?hintId.hint.productId:0) ? (
+      {product._id === (hintId.hint.productId ? hintId.hint.productId : 0) ? (
         <>
           {isPopupOpen && (
             <Popup
@@ -50,6 +71,7 @@ function ProductTile({ product, products, index, game }) {
               gameType={game}
               seconds={seconds}
               setSeconds={setSeconds}
+              setgameOver={setgameOver}
             />
           )}
           <button onClick={togglePopup} style={{ backgroundColor: "#4CAF50" }}> GAME </button>
