@@ -8,8 +8,8 @@ import ProductTile from "./ProductTile";
 const Product = () => {
   const products = useSelector((state) => state.allProducts.categoryProd);
   const games = ["guess-prize","sliding-game","memory-flip"]
-  //const game =  games[Math.floor(Math.random() * games.length)];
-  const game = games[0];
+  const game =  games[Math.floor(Math.random() * games.length)];
+  // const game = games[0];
 
   return (
     <>
@@ -220,7 +220,7 @@ const FilterCateg = styled.div`
 `;
 
 const ProductShow = styled.div`
-  width: 83rem;
+  width: 100%;
   padding: 10px;
   flex-wrap: wrap;
 
