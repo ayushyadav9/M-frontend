@@ -15,7 +15,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
             x
           </span>
 
-          {gameType === "memory-flip" && <MemoryFlipGame products={products} setgameOver={setgameOver}/>}
+          {gameType === "memory-flip" && <MemoryFlipGame seconds={seconds} setSeconds={setSeconds} products={products} setgameOver={setgameOver}/>}
           {gameType === "sliding-game" && (
             <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds} setgameOver={setgameOver}/>
           )}

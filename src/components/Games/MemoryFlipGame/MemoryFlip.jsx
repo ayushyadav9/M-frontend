@@ -5,12 +5,14 @@ import Board from "./board";
 import Summary from "./summary";
 import { withRouter } from "react-router-dom";
 import ScoreBoard from "./board/ScoreBoard";
+import { useDispatch } from "react-redux";
+import { removeHint } from "../../../redux/actions/hintActions";
 
 MemoryFlip.defaultProps = {
   gridSize: [5, 2],
 };
 
-function MemoryFlip({ gridSize, products }) {
+function MemoryFlip({ gridSize, products,seconds,setSeconds }) {
   // const GRID_SIZES = [
   //   [3, 4],
   //   [5, 2],
@@ -25,7 +27,10 @@ function MemoryFlip({ gridSize, products }) {
   };
 
   const [viewOption, setViewOption] = useState(GAME_VIEWS.PLAYING);
+  const dispatch = useDispatch();
   // const [gridSize, setGridSize] = useState(GRID_SIZES[1]);
+
+  //console.log("here : ",viewOption);
 
   const [gameStats, setGameStats] = useState({
     matched: null,
@@ -34,8 +39,21 @@ function MemoryFlip({ gridSize, products }) {
   });
 
   useEffect(() => {
-    console.log(gameStats);
-  }, [gameStats]);
+    //console.log(gameStats);
+    if(viewOption === GAME_VIEWS.SUMMARY){
+      console.log("Game Completed : ",gameStats.moves);
+      console.log("Time Taken : ",seconds);
+
+      localStorage.removeItem('hint')
+      localStorage.removeItem('time')
+      //Gugad
+      setSeconds(0);
+      setTimeout(() => {
+        dispatch(removeHint());
+      }, 10000);
+    }
+
+  }, [viewOption]);
 
   return (
     <div className="App">
@@ -56,7 +74,7 @@ function MemoryFlip({ gridSize, products }) {
         </div>
       )}
 
-      {viewOption === GAME_VIEWS.SUMMARY && (
+      {viewOption === GAME_VIEWS.SUMMARY && (        
         <Summary
           GAME_VIEWS={GAME_VIEWS}
           setViewOption={setViewOption}

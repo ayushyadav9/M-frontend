@@ -3,13 +3,14 @@ import { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Card from "../card";
 
+
 function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, products }) {
   const [flipped, setFlipped] = useState([]);
   const [cards, setCards] = useState([]);
   const [matched, setMatched] = useState([]);
   const [matchedAll, setMatchedAll] = useState(false);
   const [disabled, setDisabled] = useState(false);
-
+  
   /**
    * Randomly shuffle an array
    * https://gomakethings.com/how-to-shuffle-an-array-with-vanilla-js/
@@ -97,6 +98,7 @@ function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, produ
 
   useEffect(() => {
     if (matched.length > 0 && matched.length === grid[0] * grid[1]) {
+          
       setMatchedAll(true);
       setTimeout(() => {
         setGameStats({ ...gameStats, matchedAll: true, matched: matched });
