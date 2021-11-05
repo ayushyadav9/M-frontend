@@ -58,7 +58,7 @@ const Product = () => {
             })}
           </FilterCateg>
           <FilterCateg>
-            <div className="title">BRAND</div>
+            <div className="title">BRANDS</div>
             {CheckedBrand.map((brand_type, index) => {
               return (
                 <div className="category_check" key={index}>
