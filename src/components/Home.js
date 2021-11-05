@@ -7,6 +7,7 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import "./myntra.css"
+import "semantic-ui-css/semantic.css";
 
 const Home = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
