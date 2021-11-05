@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
 import { useSelector } from "react-redux";
-
+import { useDispatch } from "react-redux";
+import { removeHint } from "../../redux/actions/hintActions";
 
 function ProductTile({ product, products, index, game }) {
   const [showHeart, setShowHeart] = useState(false);
@@ -10,15 +11,14 @@ function ProductTile({ product, products, index, game }) {
   const [gameOver, setgameOver] = useState(false);
 
   const [seconds, setSeconds] = useState(game==="guess-prize" ? 20 : 1);
-
+  const dispatch = useDispatch();
   const togglePopup = () => {
     setIsPopupOpen((prev) => {
       if (prev) {
-        //setSeconds(20);
         //if popup is to be closed
-        
         if (!gameOver) localStorage.setItem('time', JSON.stringify({ seconds: seconds, pauseTime: Date.now() }))
         else{
+            dispatch(removeHint());
           if(game === "guess-prize"){
             setSeconds(20);
           }

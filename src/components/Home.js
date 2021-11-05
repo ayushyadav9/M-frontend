@@ -7,6 +7,7 @@ import "react-sliding-pane/dist/react-sliding-pane.css";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import "./myntra.css"
+import "semantic-ui-css/semantic.css";
 
 const Home = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
@@ -41,9 +42,7 @@ const Home = () => {
       <div
         onClick={handelsidebar}
         className={` FreeShippingBanner-sidebar FreeShippingBanner-sidebar-${classn}`}>
-        <div
-          className={` FreeShippingBanner-arrow FreeShippingBanner-arrow-${classn}`}
-        ></div>
+        <div className={` FreeShippingBanner-arrow FreeShippingBanner-arrow-${classn}`}></div>
         <p className="FreeShippingBanner-sidebar-content"> Myntra  Heist  69</p>
       </div>
       {classn==="expanded" &&

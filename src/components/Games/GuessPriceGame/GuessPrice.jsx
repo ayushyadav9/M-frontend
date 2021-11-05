@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
-import { useDispatch } from "react-redux";
-import { removeHint } from "../../../redux/actions/hintActions";
 
 GuessPrice.defaultProps = {
   maxValue: 10000
@@ -21,8 +19,6 @@ function GuessPrice(props) {
   const [value, setValue] = useState([props.maxValue * 0.4, props.maxValue * 0.6]);
   const [disabl, setdisabl] = useState(false)
   const ref = useRef(null)
-  const dispatch = useDispatch();
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,10 +60,6 @@ function GuessPrice(props) {
           );
           localStorage.removeItem('hint')
           localStorage.removeItem('time')
-          setTimeout(() => {
-            dispatch(removeHint());
-          }, 10000);
-
   };
   return (
     <GuessPriceWrapper>
