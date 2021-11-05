@@ -42,9 +42,7 @@ const Home = () => {
       <div
         onClick={handelsidebar}
         className={` FreeShippingBanner-sidebar FreeShippingBanner-sidebar-${classn}`}>
-        <div
-          className={` FreeShippingBanner-arrow FreeShippingBanner-arrow-${classn}`}
-        ></div>
+        <div className={` FreeShippingBanner-arrow FreeShippingBanner-arrow-${classn}`}></div>
         <p className="FreeShippingBanner-sidebar-content"> Myntra  Heist  69</p>
       </div>
       {classn==="expanded" &&
