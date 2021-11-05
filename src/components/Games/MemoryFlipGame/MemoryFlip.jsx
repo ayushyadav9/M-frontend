@@ -1,4 +1,5 @@
 import "./MemoryFlip.css";
+import "semantic-ui-css/semantic.css";
 import React, { useState, useEffect } from "react";
 import Board from "./board";
 import Summary from "./summary";
