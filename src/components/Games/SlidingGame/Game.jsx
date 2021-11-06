@@ -46,7 +46,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
 
   useEffect(() => {
     if(data.moves!==0 && seconds!==0){
-      setcurrentScore(Math.round(10000/(seconds*data.moves)))
+      setcurrentScore(Math.round(100/( (0.05*seconds) + (0.005*data.moves) )))
     }
   }, [data.moves,seconds])
 
