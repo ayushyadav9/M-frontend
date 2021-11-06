@@ -3,14 +3,14 @@ import Hints from "./Hints/Hints";
 import { useDispatch } from "react-redux";
 import { getHint } from "../redux/actions/hintActions";
 import Header from "./Header";
-import "./myntra.css"
+import "./myntra.css";
 import "semantic-ui-css/semantic.css";
 import Sidebar from "./Sidebar";
 import Homepage from "./Homepage/Homepage";
 
 const Home = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
-  
+
   const handleClose = () => {
     setIsPopupOpen((prev) => {
       return !prev;
@@ -25,14 +25,13 @@ const Home = () => {
     dispatch(getHint());
     // eslint-disable-next-line
   }, []);
-  
 
   return (
     <>
       <Header />
-      {isPopupOpen && <Hints handleClose={handleClose}/>}
-      <Sidebar/>
-      <Homepage/>
+      {isPopupOpen && <Hints handleClose={handleClose} />}
+      <Sidebar setIsPopupOpen={setIsPopupOpen} />
+      <Homepage />
     </>
   );
 };
