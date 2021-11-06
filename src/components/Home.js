@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Hints from "./Hints/Hints";
 import { useDispatch } from "react-redux";
 import { getHint } from "../redux/actions/hintActions";
-import "react-sliding-pane/dist/react-sliding-pane.css";
 import Header from "./Header";
 import "./myntra.css"
 import "semantic-ui-css/semantic.css";

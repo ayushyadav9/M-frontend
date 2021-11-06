@@ -16,7 +16,7 @@ function Menu(props) {
       <button disabled={props.isSolved} onClick={solveClickHandler}>
         Solve it for me
       </button>
-      <button onClick={nextClickHandler}>Reshuffle Puzzle</button>
+      <button disabled={props.isSolved} onClick={nextClickHandler}>Reshuffle Puzzle</button>
     </div>
   );
 }
