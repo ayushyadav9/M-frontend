@@ -33,11 +33,9 @@ function ProductTile({ product, products, index, game }) {
       }
       else {
         //popup is to be opened
-        if (!gameOver) {
-          console.log("heree");
+        if (!gameOver) {          
           const timeData = JSON.parse(localStorage.getItem('time'));
-          if (timeData) {
-            console.log("here2");
+          if (timeData) {            
             const timeLeft = timeData.seconds;
             const pauseTime = timeData.pauseTime;
             const currentTime = Date.now();

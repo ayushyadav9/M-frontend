@@ -498,6 +498,11 @@ ul {
   margin-top: -12px;
 }
 
+.rowTwo_popUps {
+  display: flex;
+  flex-direction: column;
+}
+
 .loader-container {
   position: fixed;
   top: 50%;

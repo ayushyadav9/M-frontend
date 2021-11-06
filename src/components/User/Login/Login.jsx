@@ -43,7 +43,7 @@ function Login() {
                   disabled={renderProps.disabled}
                 >
                   {/* <img src='/images/google.svg' className={styles.googleimg} alt='Google' /> */}
-                  <span className="heading">SignIn with Google</span>
+                  <span className="heading">Sign-In with Google</span>
                 </button>
               )}
             />
@@ -88,7 +88,6 @@ const CouponImg = styled.div`
 `;
 
 const Inputcontainer = styled.div`
-  width: 77%;
   background-color: white;
   padding: 7rem 3rem;
   height: 20%;
