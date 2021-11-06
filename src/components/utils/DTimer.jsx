@@ -27,7 +27,7 @@ const DTimer = ({seconds, setSeconds}) => {
 
   return (
     <div>
-      { seconds === 0 ? (<h1>Time UP !!!!</h1>) : (
+      { seconds === 0 ? (<h1>Time Up !</h1>) : (
         <h1>
           {" "}
           {formatTime(seconds)}

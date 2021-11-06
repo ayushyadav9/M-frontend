@@ -36,18 +36,6 @@ function Board({ grid, setViewOption, GAME_VIEWS, gameStats, setGameStats, produ
   };
 
   useEffect(() => {
-    // const CARD_NAMES = [
-    //   "Bat",
-    //   "Cat",
-    //   "Cow",
-    //   "Dragon",
-    //   "GarbageMan",
-    //   "GhostDog",
-    //   "Hen",
-    //   "Horse",
-    //   "Pig",
-    //   "Spider",
-    // ];
     const ProductArray = products.map((product) => product.searchImage);
     // console.log(ProductArray);
 

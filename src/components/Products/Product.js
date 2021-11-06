@@ -9,7 +9,6 @@ const Product = () => {
   const products = useSelector((state) => state.allProducts.categoryProd);
   const games = ["guess-prize","sliding-game","memory-flip"]
   const game =  games[Math.floor(Math.random() * games.length)];
-  //const game = games[0];
 
   return (
     <>

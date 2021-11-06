@@ -5,7 +5,7 @@ import GuessPrice from "../Games/GuessPriceGame/GuessPrice";
 import UTimer from "../utils/UTimer";
 import Dtimer from "../utils/DTimer"
 
-const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, setgameOver}) => {
+const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, setgameOver, universalProduct}) => {
   
   return (
     <PopupContainer>
@@ -20,7 +20,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
             <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds} setgameOver={setgameOver}/>
           )}
           {gameType === "guess-prize" && (
-            <GuessPrice seconds={seconds} setSeconds={setSeconds} product={product} maxValue={10000} setgameOver={setgameOver}/>
+            <GuessPrice seconds={seconds} setSeconds={setSeconds} product={universalProduct} maxValue={10000} setgameOver={setgameOver}/>
           )}
           
           {/* Timer */}

@@ -47,7 +47,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   useEffect(() => {
     if(currentScore!==0 ){
       if(seconds!==0){
-        setcurrentScore(Math.round((1/Math.sqrt(seconds) + (data.moves !==0 ? (2 / Math.pow(data.moves,2)) : 1))*1000))
+        setcurrentScore(Math.round((1/Math.sqrt(seconds) + (data.moves !==0 ? (2 / Math.pow(data.moves,0.5)) : 1))*1000))
       }
     }
     // eslint-disable-next-line
@@ -94,14 +94,14 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
       localStorage.removeItem('time')
       //Gugad
       setTimeout(() => {
-        alert("Hurray Solved!!!")
+        alert("Hurray Solved !")
       }, 500);  
     }
     // eslint-disable-next-line
   }, [data.gridModel.isSolved()])
 
   const hint = () => {
-    if (window.confirm("Using hint will panalize you!!!")) {
+    if (window.confirm("Using hint will panalize you!")) {
       if (!isSolving()) {
         if (!solution) {
           solution = new SolverModel(data.gridModel).solve();
