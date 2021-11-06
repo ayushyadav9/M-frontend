@@ -37,7 +37,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   const [isSolUsed, setisSolUsed] = useState(false)
   const [score, setscore] = useState(0)
   const [timeTaken, settimeTaken] = useState(null)
-  const [currentScore, setcurrentScore] = useState(0)
+  const [currentScore, setcurrentScore] = useState(2000)
 
   useEffect(() => {
     timeouts = [];

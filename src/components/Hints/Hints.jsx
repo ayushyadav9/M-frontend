@@ -16,7 +16,7 @@ const Hints = ({handleClose}) => {
             x
           </span>
           <div>
-              <h1>Ye le Hint : </h1>
+              <h1> Current Hint: </h1>
               <h2>{hint.hint.hint.hintStatement}</h2>
           </div>
         </div>
