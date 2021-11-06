@@ -12,6 +12,8 @@ function ProductTile({ product, products, index, game }) {
   const [gameOver, setgameOver] = useState(false);
   const history = useHistory()
   const [seconds, setSeconds] = useState(game==="guess-prize" ? 20 : 1);
+  const universalProduct = useSelector((state) => state.hint.hint.universalProduct);
+ 
   const dispatch = useDispatch();
   const togglePopup = () => {
     setIsPopupOpen((prev) => {
@@ -74,6 +76,7 @@ function ProductTile({ product, products, index, game }) {
               seconds={seconds}
               setSeconds={setSeconds}
               setgameOver={setgameOver}
+              universalProduct ={universalProduct}
             />
           )}
           <button onClick={togglePopup} style={{ backgroundColor: "#4CAF50" }}> GAME </button>
