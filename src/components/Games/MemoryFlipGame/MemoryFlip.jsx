@@ -30,7 +30,7 @@ function MemoryFlip({ gridSize, products,seconds,setSeconds,setgameOver }) {
 
   useEffect(() => {
     if(gameStats.moves!==0 && seconds!==0){
-      setcurrentScore(Math.round(10000/(seconds*gameStats.moves)))
+      setcurrentScore(Math.round(100/(0.05*seconds) + (0.005*gameStats.moves)))
     }
   }, [gameStats.moves,seconds])
 

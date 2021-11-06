@@ -14,7 +14,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
           <span className="close-icon" onClick={handleClose}>
             x
           </span>
-
+                   
           {gameType === "memory-flip" && <MemoryFlipGame seconds={seconds} setSeconds={setSeconds} products={products} setgameOver={setgameOver}/>}
           {gameType === "sliding-game" && (
             <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds} setgameOver={setgameOver}/>
@@ -22,7 +22,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
           {gameType === "guess-prize" && (
             <GuessPrice seconds={seconds} setSeconds={setSeconds} product={product} maxValue={10000} setgameOver={setgameOver}/>
           )}
-
+          
           {/* Timer */}
           <span style={{ textAlign: "center" }}>
             { (gameType === "memory-flip" || gameType === "sliding-game")?  <UTimer seconds={seconds} setSeconds={setSeconds}/>
