@@ -46,6 +46,7 @@ const PopupContainer = styled.div`
     height: 100vh;
     top: 0;
     left: 0;
+    
   }
 
   .box {
@@ -55,11 +56,13 @@ const PopupContainer = styled.div`
     height: auto;
     max-height: 85vh;
     margin-top: calc(100vh - 85vh - 10px);
-    background: #fff;
+    // background: #fff;
     border-radius: 4px;
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
+    background-image: -webkit-gradient(linear,right top,left top,from(#fef9e5),to(#fde3f3));
+    background-image: linear-gradient(270deg,#fef9e5,#fde3f3);
   }
 
   .close-icon {

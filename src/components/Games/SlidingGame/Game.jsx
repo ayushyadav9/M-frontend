@@ -45,9 +45,12 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   }, []);
 
   useEffect(() => {
-    if(data.moves!==0 && seconds!==0){
-      setcurrentScore(Math.round(100/( (0.05*seconds) + (0.005*data.moves) )))
+    if(currentScore!==0 ){
+      if(seconds!==0){
+        setcurrentScore(Math.round((1/Math.sqrt(seconds) + (data.moves !==0 ? (2 / Math.pow(data.moves,2)) : 1))*1000))
+      }
     }
+    // eslint-disable-next-line
   }, [data.moves,seconds])
 
   useEffect(() => {
@@ -121,7 +124,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
     solution = null;
     setData((prev) => ({
       gridModel: GridModel.buildFromSize(gridDimension),
-      moves: 0,
+      moves: prev.moves,
     }));
   };
 
