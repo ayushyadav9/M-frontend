@@ -7,20 +7,16 @@ import "./myntra.css";
 import "semantic-ui-css/semantic.css";
 import Sidebar from "./Sidebar";
 import Homepage from "./Homepage/Homepage";
+import { Leaderboard } from "./Leaderboard";
 
 const Home = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
-
-  const handleClose = () => {
-    setIsPopupOpen((prev) => {
-      return !prev;
-    });
-  };
+  const [isHintOpen, setIsHintOpen] = useState(true);
+  const [isLeaderboardOpen, setisLeaderboardOpen] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      setIsPopupOpen(false);
+      setIsHintOpen(false);
     }
     dispatch(getHint());
     // eslint-disable-next-line
@@ -28,9 +24,15 @@ const Home = () => {
 
   return (
     <>
-      <Header />
-      {isPopupOpen && <Hints handleClose={handleClose} />}
-      <Sidebar setIsPopupOpen={setIsPopupOpen} />
+      <Header />      
+      {isHintOpen && <Hints handleClose={() => {
+        setIsHintOpen((prev) => {
+          return !prev;
+        }
+      )}} 
+      />}
+      {isLeaderboardOpen && <Leaderboard setisLeaderboardOpen={setisLeaderboardOpen}/>}
+      <Sidebar setIsHintOpen={setIsHintOpen} setisLeaderboardOpen={setisLeaderboardOpen}/>
       <Homepage />
     </>
   );

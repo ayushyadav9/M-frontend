@@ -34,8 +34,8 @@ const Sidebar = (props) => {
                     MYNTRA TREASURE HUNT
                   </div>
                   <div className=" FreeShippingBanner-header FreeShippingBanner-header-primary">
-                    Welcome Professor,
-                  </div>
+                    Welcome {stats ? (stats.name.charAt(0).toUpperCase() + stats.name.slice(1)).split(' ')[0] : "Professor"},
+                  </div> 
                   <div className=" FreeShippingBanner-header FreeShippingBanner-header-secondary">
                     Guess the hint and win amazing rewards
                   </div>
@@ -49,21 +49,35 @@ const Sidebar = (props) => {
                 <div className="FreeShippingBanner-coupon">
                   <div>
                     <span className="FreeShippingBanner-text">Reward Coupon:</span>
-                    <span className="FreeShippingBanner-code">COUPONLELO</span>
+                    <span className="FreeShippingBanner-code">HEIST_NF37D</span>
                   </div>
                 </div>
                 <div className="FreeShippingBanner-getHint">
-                  <div>
-                    <span
+                  <div className="rowTwo_popUps">
+                    <div
                       className="FreeShippingBanner-text"
                       onClick={() => {
-                        props.setIsPopupOpen((prev) => {
+                        props.setIsHintOpen((prev) => {
                           return !prev;
                         });
+                        props.setisLeaderboardOpen(false);
                       }}
                     >
                       Current Hint
-                    </span>
+                    </div>
+
+                    <div
+                      className="FreeShippingBanner-text"
+                      onClick={() => {
+                        props.setisLeaderboardOpen((prev) => {
+                          return !prev;
+                        });
+                        props.setIsHintOpen(false);
+                      }}
+                    >
+                      LeaderBoard
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -105,8 +119,8 @@ const Sidebar = (props) => {
               <div className="FreeShippingBanner-second-row">
                 <div className="FreeShippingBanner-coupon">
                   <div>
-                    <span className="FreeShippingBanner-text">Coupon Code:</span>
-                    <span className="FreeShippingBanner-code">HAGRYA69</span>
+                    <span className="FreeShippingBanner-text">Win Exciting Rewards</span>
+                    {/* <span className="FreeShippingBanner-code"></span> */}
                   </div>
                   <div className="FreeShippingBanner-footer">
                     {" "}

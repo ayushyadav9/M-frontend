@@ -16,7 +16,7 @@ const Header = () => {
               return (
                 <div key={idx} className="desktop-navContent">
                   <div className="desktop-navLink">
-                    <Link to={`/gender/${item.link}`} data-group="men" data-color="#ee5f73" data-type="navElements" style={{ borderBottomColor: `${item.color}` }}className="desktop-main">
+                    <Link to={`/gender/${item.link}`} data-group="men" data-color="#ee5f73" data-type="navElements" style={{ borderBottomColor: `${item.color}` }} className="desktop-main">
                       {item.title}
                     </Link>
                     <div className="desktop-backdropStyle">
@@ -52,7 +52,7 @@ const Header = () => {
               <span className="desktop-userTitle">Profile</span>
             </div>
             <div className="desktop-userActions">
-            <div className="desktop-userActionsArrow"></div>
+              <div className="desktop-userActionsArrow"></div>
               <div className="desktop-userActionsContent">
                 <div className="desktop-contentInfo">
                   <div className="desktop-infoTitle">Welcome</div>
@@ -61,9 +61,13 @@ const Header = () => {
                   </div>
                 </div>
                 <div>
-                  <div className="desktop-getUserInLinks desktop-getInLinks">
-                    <Link to="/login" data-track="login"className="desktop-linkButton">login / Signup</Link>
-                  </div>
+                  {localStorage.getItem("token") ? (<div className="desktop-getUserInLinks desktop-getInLinks" onClick={() => localStorage.clear()}>
+                    <Link to="/login" data-track="login" className="desktop-linkButton">Logout</Link>
+                  </div>) : (
+                    <div className="desktop-getUserInLinks desktop-getInLinks">
+                      <Link to="/login" data-track="login" className="desktop-linkButton">login / Signup</Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -79,7 +83,7 @@ const Header = () => {
           </a>
         </div>
         <div className="desktop-query">
-          <input placeholder="Search for products, brands and more" className="desktop-searchBar"value="" onChange={()=>{}}/>
+          <input placeholder="Search for products, brands and more" className="desktop-searchBar" value="" onChange={() => { }} />
           <a className="desktop-submit" href="/">
             <span className="myntraweb-sprite desktop-iconSearch sprites-search"></span>
           </a>
