@@ -17,7 +17,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
                    
           {gameType === "memory-flip" && <MemoryFlipGame seconds={seconds} setSeconds={setSeconds} products={products} setgameOver={setgameOver}/>}
           {gameType === "sliding-game" && (
-            <SlidingGame thumbnailImg={product.searchImage} seconds={seconds} setSeconds={setSeconds} setgameOver={setgameOver}/>
+            <SlidingGame product={product} seconds={seconds} setSeconds={setSeconds} setgameOver={setgameOver}/>
           )}
           {gameType === "guess-prize" && (
             <GuessPrice seconds={seconds} setSeconds={setSeconds} product={universalProduct} maxValue={10000} setgameOver={setgameOver}/>

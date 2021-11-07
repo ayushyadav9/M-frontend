@@ -83,7 +83,8 @@ function ProductTile({ product, products, index, game }) {
         </>
       ) : null}
 
-      <img src={product.searchImage} className="product_Image" alt="prod" />
+      <img src={product.searchImage} className={product._id === hintId.hint.productId ? 'product_Image--gameTile' : "product_Image"} alt="prod" />
+      
       <div className="movieStar">
         <div className="brand_Name">{product.brand}</div>
         <div

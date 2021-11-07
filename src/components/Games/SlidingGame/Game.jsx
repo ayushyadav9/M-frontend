@@ -28,7 +28,7 @@ Game.defaultProps = {
   gameSize: 450,
 };
 
-export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,setSeconds ,setgameOver}) {
+export default function Game({ gridDimension, gameSize, product, seconds, setSeconds, setgameOver }) {
   const [data, setData] = useState({
     gridModel: GridModel.buildFromSize(gridDimension),
     moves: 0,
@@ -37,7 +37,12 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   const [isSolUsed, setisSolUsed] = useState(false)
   const [score, setscore] = useState(0)
   const [timeTaken, settimeTaken] = useState(null)
-  const [currentScore, setcurrentScore] = useState(2000)
+  const [currentScore, setcurrentScore] = useState(2000);
+  const [showHeart, setShowHeart] = useState(false);
+
+  const changeAddHeart = (data, id) => {
+    setShowHeart((prev) => !prev);
+  };
 
   useEffect(() => {
     timeouts = [];
@@ -45,41 +50,41 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
   }, []);
 
   useEffect(() => {
-    if(currentScore!==0 ){
-      if(seconds!==0){
-        setcurrentScore(Math.round((1/Math.sqrt(seconds) + (data.moves !==0 ? (2 / Math.pow(data.moves,0.5)) : 1))*1000))
+    if (currentScore !== 0) {
+      if (seconds !== 0) {
+        setcurrentScore(Math.round((1 / Math.sqrt(seconds) + (data.moves !== 0 ? (2 / Math.pow(data.moves, 0.5)) : 1)) * 1000))
       }
     }
     // eslint-disable-next-line
-  }, [data.moves,seconds])
+  }, [data.moves, seconds])
 
   useEffect(() => {
-    if(data.gridModel.isSolved()){
+    if (data.gridModel.isSolved()) {
       //Post Req
       setgameOver(true);
       settimeTaken(seconds)
-        fetch("https://myntrah-backend.herokuapp.com/sendScore", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({gametype :"sliding",moves: data.moves,time: seconds,isSolused:isSolUsed})
-        })
-          .then((res) => res.json())
-          .then(
-            (result) => {
-              console.log(result)
-              if (result.success) {
-                setscore(result.data.score)
-              } else {
-                console.log(result.message)
-              }
-            },
-            (error) => {
-              console.log(error)
+      fetch("https://myntrah-backend.herokuapp.com/sendScore", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ gametype: "sliding", moves: data.moves, time: seconds, isSolused: isSolUsed })
+      })
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            console.log(result)
+            if (result.success) {
+              setscore(result.data.score)
+            } else {
+              console.log(result.message)
             }
-          );
+          },
+          (error) => {
+            console.log(error)
+          }
+        );
       setTimeout(() => {
         setData((prev) => ({
           ...prev,
@@ -87,7 +92,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
           moves: 0,
         }));
       }, 10000);
-      
+
       setSeconds(0);
       //Remove Hint if the puzzle is solved
       localStorage.removeItem('hint')
@@ -95,7 +100,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
       //Gugad
       setTimeout(() => {
         alert("Hurray Solved !")
-      }, 500);  
+      }, 500);
     }
     // eslint-disable-next-line
   }, [data.gridModel.isSolved()])
@@ -192,7 +197,7 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
           model={data.gridModel}
           moveTile={moveTile}
           gameSize={gameSize}
-          thumbnailImg={thumbnailImg}
+          thumbnailImg={product.searchImage}
         />
         <div id="aside">
           <ScoreBoard moves={data.moves} />
@@ -205,11 +210,32 @@ export default function Game({ gridDimension, gameSize, thumbnailImg, seconds,se
         </div>
       </div>
       <div id="score">
-        <h2 > Your Current Score {currentScore} 
-        <br/> {score? <span>{`Your Total score: ${Math.round(score)}`}</span>:""}
-        <br/> {timeTaken && <span>Time Taken: {formatTime(timeTaken)}</span>}
+        <h2 > Your Current Score {currentScore}
+          <br /> {score ? <span>{`Your Total score: ${Math.round(score)}`}</span> : ""}
+          <br /> {timeTaken && <span>Time Taken: {formatTime(timeTaken)}</span>}
         </h2>
       </div>
+
+      <div className="product_Container">
+        <img src={product.searchImage} className="product_Image" alt="prod" />
+        <div className="movieStar">
+          <div className="brand_Name">{product.brand}</div>
+          <div
+            onClick={() => changeAddHeart(product, product.productId)}
+            className={`${showHeart ? "fillStar" : "emptyStar"}`}
+          >
+            {showHeart ? "♥️" : "♡"}
+          </div>
+        </div>
+        <div className="addproduct_Info">{product.additionalInfo}</div>
+        <div className="price_Show">
+          <div className="price_view">{"RS." + product.price}</div>
+          <div className="mrp_view">{"RS." + product.mrp}</div>
+          <div className="discount_view">{product.discountDisplayLabel}</div>
+        </div>
+      </div>
+
+
     </GameWrapper>
   );
 }
