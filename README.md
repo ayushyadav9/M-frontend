@@ -21,16 +21,17 @@
 ## About The Project
 
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+The main game revolves around the products listed on the Myntra website and aims at encouraging users to explore the various products and categories on the website. 
+This is planned to be achieved by transforming the display images of targeted products into classic picture puzzles which the user can solve to gain points and climb the leaderboard and compete with other customers. 
+Upon solving each puzzle the users will get a hint for the location for the next product. The choice of these products can be tailored to fit the choices and preferences of the user.
+As the user solves more levels, the difficulty of finding the product image and the difficulty of the puzzle increases adding to the competitive element of the game.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+Flow of the Hunt:
+* First-time users will be asked if they want to participate in the hunt and will have to register/login to play.
+* Users will be given appropriate hints on where to find the next destination product.
+* The user explores the product pages according to the  hint and finds the target product. The user then has to solve the embedded puzzle.
+* Users will be given points based on various parameters and will be given the hint to the next puzzle. The user will also be incentivised at various milestones of the hunt.
+* Leaderboard system where top performers will be awarded bonus rewards.
 
 <p align="right"><br/></p>
 
