@@ -1,5 +1,8 @@
 <div id="top"></div>
 <!-- PROJECT LOGO -->
+<p align="center">
+  <img width="300px" src="https://myntrascmuistatic.myntassets.com/partner-assets/unity/img/myntra-icon.png">
+</p>
 <br />
 <div align="center">
     <h1>Team: RANDOM</H1>
