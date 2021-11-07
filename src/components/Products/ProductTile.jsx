@@ -65,6 +65,9 @@ function ProductTile({ product, products, index, game }) {
 
   return (
     <div className="product_Container">
+
+      
+
       {product._id === (hintId.hint.productId ? hintId.hint.productId : 0) ? (
         <>
           {isPopupOpen && (
@@ -78,8 +81,9 @@ function ProductTile({ product, products, index, game }) {
               setgameOver={setgameOver}
               universalProduct ={universalProduct}
             />
-          )}
-          <button onClick={togglePopup} style={{ backgroundColor: "#4CAF50" }}> GAME </button>
+          )}         
+          <span onClick={togglePopup} style={{fontWeight:"750"}}><img style={{width:"35%"}} src="/Images/treasure.gif" alt="treasure_chest" />Click Here</span>
+          {/* <button onClick={togglePopup} style={{ backgroundColor: "#4CAF50" }}> GAME </button> */}
         </>
       ) : null}
 
