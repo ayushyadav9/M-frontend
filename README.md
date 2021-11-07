@@ -61,6 +61,7 @@ _Below are the steps to clone the repository and  setting up the app in local._
 
 
 1. Clone the repo
+ <p align="right"><br/></p>
    ```sh
    git clone https://github.com/ayushyadav9/M-frontend.git
    ```
