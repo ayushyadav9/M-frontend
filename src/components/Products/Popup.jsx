@@ -28,7 +28,7 @@ const Popup = ({ handleClose, product, products, gameType, seconds,setSeconds, s
             { (gameType === "memory-flip" || gameType === "sliding-game")?  <UTimer seconds={seconds} setSeconds={setSeconds}/>
             :<Dtimer seconds={seconds} setSeconds={setSeconds}/>}
           </span>
-
+            
         </div>
       </div>
     </PopupContainer>

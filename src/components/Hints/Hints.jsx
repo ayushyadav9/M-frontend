@@ -18,6 +18,7 @@ const Hints = ({handleClose}) => {
           <div>
               <h1> Current Hint: </h1>
               <h2 className="hintStatement">{hint.hint.hint.hintStatement}</h2>
+              <img style={{zIndex:"10",float: "right",marginRight:"7rem"}} src="/images/hint.png" alt=""></img>
           </div>
         </div>
       </div>}
@@ -53,8 +54,8 @@ const PopupContainer = styled.div`
     padding: 20px;
     border: 1px solid #999;
     overflow: auto;
-    background-image: -webkit-gradient(linear,right top,left top,from(#fef9e5),to(#fde3f3));
-    background-image: linear-gradient(270deg,#fef9e5,#fde3f3);
+    background: -webkit-gradient(linear,right top,left top,from(#fef9e5),to(#fde3f3));
+    background: linear-gradient(270deg,#fef9e5,#fde3f3);
 
   }
   .hintStatement{
