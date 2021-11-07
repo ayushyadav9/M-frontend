@@ -111,7 +111,8 @@ Demo Link: [Demo Link](https://m-frontend.netlify.app/)
 
 <p align="right"><br/></p>
 
-
+## Screenshots
+<img width="930" alt="pic" src="https://github.com/soumyadeeptadas/Getaway-HackingBad/blob/main/screenshots/Screenshot%20(1424).png">
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
