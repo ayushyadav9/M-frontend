@@ -77,14 +77,6 @@ _Below are the steps to clone the repository and  setting up the app in local._
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
 <p align="right"><br/></p>
 
 
@@ -126,13 +118,8 @@ Demo Link: [Demo Link](https://m-frontend.netlify.app/)
 
 * [Semantic-UI](https://semantic-ui.com/)
 * [Redux Thunk](https://github.com/reduxjs/redux-thunk)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [PassportJs](http://www.passportjs.org/)
+* [Json Web Token](https://jwt.io/)
 
 <p align="right"><a href="#top"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-up-arrow-alignment-and-tools-kiranshastry-gradient-kiranshastry.png"/></a></p>
 
