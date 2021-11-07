@@ -1,12 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Product from "./Product";
 import Header from "../Header";
 import {fetchProductByCategory,removeCategoryProduct,fetchProductByGender} from "../../redux/actions/productActions";
-// import { getHint } from "../../redux/actions/hintActions";
+import { Leaderboard } from "../Leaderboard";
+import Sidebar from "../Sidebar";
+import Hints from "../Hints/Hints";
 
 const Category = (props) => {
+  const [isHintOpen, setIsHintOpen] = useState(false);
+  const [isLeaderboardOpen, setisLeaderboardOpen] = useState(false);
+
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      setIsHintOpen(false);
+    }
+    // dispatch(getHint());
+    // eslint-disable-next-line
+  }, []);
 
   // useEffect(() => {
   //   dispatch(getHint())    
@@ -28,6 +40,14 @@ const Category = (props) => {
   return (
     <>
       <Header />
+      {isHintOpen && <Hints handleClose={() => {
+        setIsHintOpen((prev) => {
+          return !prev;
+        }
+      )}} 
+      />}
+      {isLeaderboardOpen && <Leaderboard setisLeaderboardOpen={setisLeaderboardOpen}/>}
+      <Sidebar setIsHintOpen={setIsHintOpen} setisLeaderboardOpen={setisLeaderboardOpen}/>
       <Product />
     </>
   );

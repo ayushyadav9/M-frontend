@@ -5,10 +5,26 @@ import { Genders, CheckedProduct, CheckedBrand, CheckedPrice } from "../utils/ut
 import { Space, Radio, Checkbox } from "antd";
 import ProductTile from "./ProductTile";
 
+const selectGame = (products) => {
+  if(products){
+    const allGames = ["guess-prize","sliding-game","memory-flip"];
+    const otherGames = ["guess-prize","sliding-game"];
+
+    if(products.length > 5){
+      return allGames[Math.floor(Math.random() * allGames.length)];
+    }
+    else {
+     return otherGames[Math.floor(Math.random() * otherGames.length)];
+    }
+  }
+}
+
 const Product = () => {
   const products = useSelector((state) => state.allProducts.categoryProd);
-  const games = ["guess-prize","sliding-game","memory-flip"]
-  const game =  games[Math.floor(Math.random() * games.length)];
+  // const games = ["guess-prize","sliding-game","memory-flip"]
+  const game =  selectGame(products);
+
+  //const game = "guess-prize";
 
   return (
     <>
@@ -235,6 +251,12 @@ const ProductShow = styled.div`
 
   .product_Image {
     width: 95%;
+  }
+  .product_Image--gameTile {
+    width: 95%;
+    border: 10px solid transparent;
+    padding: 5px;
+    border-image: url(https://developer.mozilla.org/en-US/docs/Web/CSS/border-image/border.png) 20% round;
   }
 
   .movieStar {

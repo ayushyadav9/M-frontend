@@ -75,9 +75,9 @@ function GuessPrice(props) {
               alt="prod"
             />
             <div className="movieStar">
-              <div className="brand_Name">{props.product.brand}</div>
+              <div className="brand_Name">{props.product.brand.slice(0,2) + "xxxxx"}</div>
             </div>
-            <div className="addproduct_Info">{props.product.additionalInfo}</div>
+            <div className="addproduct_Info">{props.product.additionalInfo.slice(0,10) + "xxxxx"}</div>
             <div className="price_Show">
               <div className="price_view">
                 {"RS." + "X".repeat(props.product.mrp.toString().length)}
