@@ -112,7 +112,7 @@ Demo Link: [Demo Link](https://m-frontend.netlify.app/)
 <p align="right"><br/></p>
 
 ## Screenshots
-<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/public/Screenshots/Picture2.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture2.png">
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
