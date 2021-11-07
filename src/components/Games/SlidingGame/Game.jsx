@@ -51,7 +51,7 @@ export default function Game({ gridDimension, gameSize, product, seconds, setSec
 
   useEffect(() => {
     if (currentScore !== 0) {
-      if (seconds !== 0) {
+      if (seconds !== 0 && seconds%10===0) {
         setcurrentScore(Math.round((1 / Math.sqrt(seconds) + (data.moves !== 0 ? (2 / Math.pow(data.moves, 0.5)) : 1)) * 1000))
       }
     }
