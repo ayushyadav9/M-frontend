@@ -20,11 +20,9 @@ const selectGame = (products) => {
 }
 
 const Product = () => {
-  const products = useSelector((state) => state.allProducts.categoryProd);
-  // const games = ["guess-prize","sliding-game","memory-flip"]
-  const game =  selectGame(products);
+  const products = useSelector((state) => state.allProducts.categoryProd);  
+  const game =  selectGame(products);  
 
-  //const game = "guess-prize";
 
   return (
     <>
@@ -239,7 +237,7 @@ const ProductShow = styled.div`
   padding: 10px;
   flex-wrap: wrap;
 
-  .product_Container {
+  .product_Container {    
     width: 18.2%;
     display: inline-block;
     margin: 5px;
