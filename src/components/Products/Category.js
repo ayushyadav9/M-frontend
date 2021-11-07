@@ -6,7 +6,6 @@ import {fetchProductByCategory,removeCategoryProduct,fetchProductByGender} from 
 import { Leaderboard } from "../Leaderboard";
 import Sidebar from "../Sidebar";
 import Hints from "../Hints/Hints";
-import { getHint } from "../../redux/actions/hintActions";
 
 const Category = (props) => {
   const [isHintOpen, setIsHintOpen] = useState(false);
@@ -17,7 +16,7 @@ const Category = (props) => {
     if (!localStorage.getItem("token")) {
       setIsHintOpen(false);
     }
-    dispatch(getHint());
+    // dispatch(getHint());
     // eslint-disable-next-line
   }, []);
 
