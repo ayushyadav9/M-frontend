@@ -113,6 +113,13 @@ Demo Link: [Demo Link](https://m-frontend.netlify.app/)
 
 ## Screenshots
 <img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture2.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture1.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture3.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture4.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture5.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture6.png">
+<img width="930" alt="pic" src="https://github.com/ayushyadav9/M-frontend/blob/master/public/Screenshots/Picture7.png">
+
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
