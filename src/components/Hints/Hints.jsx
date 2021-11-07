@@ -18,7 +18,7 @@ const Hints = ({handleClose}) => {
           <div>
               <h1> Current Hint: </h1>
               <h2 className="hintStatement">{hint.hint.hint.hintStatement}</h2>
-              <img style={{zIndex:"10",float: "right",marginRight:"7rem"}} src="/images/hint.png" alt=""></img>
+              <img style={{zIndex:"10",float: "right",marginRight:"7rem", width:"19rem"}} src="/images/hint.png" alt=""></img>
           </div>
         </div>
       </div>}
