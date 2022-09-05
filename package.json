@@ -16,6 +16,7 @@
     "axios": "^0.23.0",
     "caniuse-lite": "^1.0.30001350",
     "dotenv": "^10.0.0",
+    "gapi-script": "^1.2.0",
     "js-priority-queue": "^0.1.5",
     "lodash": "^4.17.21",
     "node-sass": "^6.0.1",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Coupon from "./images/Coupon.png";
 import { useHistory } from "react-router-dom";
 import GoogleLogin from "react-google-login";
@@ -6,11 +6,21 @@ import { login } from "../../../redux/actions/userActions";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Header from "../../Header";
+import {gapi} from "gapi-script"
 
 function Login() {
   let history = useHistory();
   // const userLogin = useSelector((state) => state.userLogin);
   const dispatch = useDispatch()
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        client_id: process.env.REACT_APP_OAUTH_CLIENT,
+        scope:""
+      })
+    }
+    gapi.load('client:auth2',start)
+  }, [])
 
   const successGoogle = async (res) => {
     await dispatch(login(res.tokenId))
