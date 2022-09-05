@@ -106,7 +106,7 @@ export default function Game({ gridDimension, gameSize, product, seconds, setSec
   }, [data.gridModel.isSolved()])
 
   const hint = () => {
-    if (window.confirm("Using hint will panalize you!")) {
+    if (window.confirm("Using hint will penalize you!")) {
       if (!isSolving()) {
         if (!solution) {
           solution = new SolverModel(data.gridModel).solve();

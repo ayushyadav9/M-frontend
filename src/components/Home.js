@@ -24,8 +24,8 @@ const Home = () => {
 
   return (
     <>
-      <Header />      
-      {isHintOpen && <Hints handleClose={() => {
+      <Header />      {isHintOpen && <Hints handleClose={() => {
+      
         setIsHintOpen((prev) => {
           return !prev;
         }

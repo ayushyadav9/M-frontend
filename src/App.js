@@ -8,6 +8,7 @@ require("dotenv").config();
 function App() {
   return (
     <div className="masterContainer">
+      <div className="progressBar"></div>
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
